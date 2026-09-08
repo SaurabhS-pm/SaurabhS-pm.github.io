@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Saurabh S. — Senior Product Leader</title>
-<meta name="description" content="Senior Product Leader with 12+ years in fintech, consumer payments and customer growth. Building fintech and AI products in the payments space.">
+<title>Saurabh S. — Staff Product Manager, Payments and Fintech</title>
+<meta name="description" content="Staff Product Manager, Payments and Fintech. 12+ years in fintech, consumer payments and customer growth. Building fintech and AI products in the payments space.">
 <meta name="author" content="SaurabhS-pm">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -88,9 +88,10 @@ p{margin:0}
 .case .wip{margin-top:20px}
 
 /* projects */
-.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));border-top:2px solid var(--rule);margin-top:24px}
-.project{padding:36px 40px 36px 0;display:flex;flex-direction:column;gap:16px}
-.project + .project{padding:36px 0 36px 40px;border-left:2px solid var(--divider)}
+.projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--rule);margin-top:24px}
+.project{padding:36px 32px;display:flex;flex-direction:column;gap:16px;border-left:2px solid var(--divider)}
+.project:first-child{padding-left:0;border-left:0}
+.project:last-child{padding-right:0}
 .project-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .project h3{font-size:26px;letter-spacing:-.02em}
 .pill{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:5px 9px;border:2px solid var(--ink)}
@@ -109,8 +110,8 @@ p{margin:0}
 .contact{background:var(--accent);color:#fff}
 .contact h2{font-size:clamp(36px,7vw,84px);line-height:.95;letter-spacing:-.035em;max-width:16ch}
 .contact .wrap{padding-top:88px;padding-bottom:88px}
-.contact-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:56px;border-top:2px solid #fff;padding-top:32px}
-.contact-links a{color:#fff;font-size:clamp(16px,2vw,20px);font-weight:700;word-break:break-all}
+.contact-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px 40px;margin-top:56px;border-top:2px solid #fff;padding-top:32px}
+.contact-links a{color:#fff;font-size:clamp(16px,2vw,20px);font-weight:700;overflow-wrap:anywhere}
 .contact-links a:hover{color:#fff;opacity:.75}
 
 footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
@@ -119,12 +120,13 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 .js [data-reveal].pre{opacity:0;transform:translateY(18px)}
 .js [data-reveal]{transition:opacity .62s cubic-bezier(.2,.7,.3,1),transform .62s cubic-bezier(.2,.7,.3,1)}
 @media (prefers-reduced-motion:reduce){.js [data-reveal].pre{opacity:1;transform:none}}
-@media (max-width:640px){
+@media (max-width:980px){
   .stat{padding:32px 0;border-right:0;border-bottom:2px solid var(--divider)}
   .stat:last-child{border-bottom:0}
   .grid-2 > li,.grid-2 > li:nth-child(even){padding:24px 0}
-  .project,.project + .project{padding:32px 0;border-left:0}
-  .project + .project{border-top:2px solid var(--divider)}
+  .projects{grid-template-columns:1fr}
+  .project,.project:first-child,.project:last-child{padding:32px 0;border-left:0;border-top:2px solid var(--divider)}
+  .project:first-child{border-top:0}
 }
 </style>
 </head>
@@ -142,7 +144,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
   </header>
 
   <section class="hero" data-reveal>
-    <div class="kicker">Senior Product Leader</div>
+    <div class="kicker">Staff Product Manager, Payments and Fintech</div>
     <h1>Payments, growth, and AI that ships.</h1>
     <p>12+ years in fintech, consumer payments and customer growth. Currently building fintech and AI products in the payments space.</p>
     <div class="actions">
@@ -150,12 +152,12 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
       <a class="btn btn-secondary" href="https://www.linkedin.com/in/saurabhsrivast/">LinkedIn</a>
       <a class="btn btn-secondary" href="https://github.com/SaurabhS-pm">GitHub</a>
     </div>
-    <div class="affil">Global marketplace, Tokyo &amp; Toronto · North American bank · RAG and LLMs</div>
+    <div class="affil">Global marketplace, Tokyo &amp; Toronto · North American bank · Cross-border payments</div>
   </section>
 
   <section class="stats">
     <div class="stat" data-reveal><b>Multi-billion $</b><span>GMV on payments and engagement platforms</span></div>
-    <div class="stat" data-reveal><b>Millions</b><span>Of users on engagement platforms I built</span></div>
+    <div class="stat" data-reveal><b>Millions</b><span>Users on engagement platforms I built</span></div>
     <div class="stat" data-reveal><b>50+ markets</b><span>Cross-border payment launch</span></div>
   </section>
 
@@ -175,36 +177,35 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
     <div class="cases-head">
       <div>
         <div class="kicker">Case studies</div>
-        <h2>Three problems, worked end to end.</h2>
+        <h2>Three problems I've taken apart.</h2>
       </div>
-      <div class="wip"><i></i><span>Work in progress</span></div>
     </div>
 
     <article class="case" data-reveal>
       <div class="case-head">
         <span class="case-num">01</span>
-        <h3>Cross-border payments, launched in 50+ markets</h3>
+        <h3>PaymentIntelligenceOS: mapping merchant payment stacks from public pages</h3>
         <span class="tag">Payments</span>
       </div>
       <div class="case-cols">
-        <div><span class="label">Context</span><p>A global marketplace needed one payment experience across dozens of currencies, regulators and card networks.</p></div>
-        <div><span class="label">What I did</span><p>Owned strategy through GTM: rail selection, pricing, risk and compliance sequencing, market-by-market rollout.</p></div>
-        <div><span class="label">Outcome</span><p>Live in 50+ markets on a platform carrying multi-billion dollar GMV.</p></div>
+        <div><span class="label">Context</span><p>Payments teams guess at what a prospect already runs. Stack-detection tools flatten everything into one verdict, so you can't tell what was observed from what was assumed.</p></div>
+        <div><span class="label">What I did</span><p>Built a crawler over public pages only — 50 merchants, five countries, 170 signatures across 61 vendors — recording sighted, possible and inferred as separate states.</p></div>
+        <div><span class="label">Outcome</span><p>Found a third-party checkout vendor sitting between store and PSP on half the Indian sample, a layer absent across the other four countries.</p></div>
       </div>
+      <a class="link-underline" style="margin-top:24px" href="case-studies/paymentintelligenceos.html">Read the case study</a>
     </article>
 
     <article class="case" data-reveal>
       <div class="case-head">
         <span class="case-num">02</span>
-        <h3>Improving navigation in a consumer maps product</h3>
-        <span class="tag">Teardown</span>
+        <h3>Cross-border payments, launched in 50+ markets</h3>
+        <span class="tag">Payments</span>
       </div>
       <div class="case-cols">
-        <div><span class="label">The gap</span><p>A self-directed teardown: which job the product handles poorly, and the evidence for it.</p></div>
-        <div><span class="label">Proposal</span><p>The change I'd ship, scoped to something a team could actually build in a quarter.</p></div>
-        <div><span class="label">How I'd measure it</span><p>The metric that would tell you it worked, and the guardrail that would tell you it didn't.</p></div>
+        <div><span class="label">Context</span><p>A global marketplace needed a single payment experience across dozens of currencies, regulators and card networks.</p></div>
+        <div><span class="label">What I did</span><p>Owned it from strategy through GTM: rail selection, pricing, risk and compliance sequencing, and market-by-market rollout.</p></div>
+        <div><span class="label">Outcome</span><p>Live in 50+ markets on a platform carrying multi-billion dollar GMV.</p></div>
       </div>
-      <div class="wip"><i></i><span>Work in progress</span></div>
     </article>
 
     <article class="case" data-reveal>
@@ -214,9 +215,9 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
         <span class="tag">Voice AI</span>
       </div>
       <div class="case-cols">
-        <div><span class="label">Context</span><p>Payment questions — a declined card, a disputed charge, a subscription someone forgot — arrive by phone, where hold times cost more than the transaction.</p></div>
-        <div><span class="label">What I'm building</span><p>A voice agent that resolves the common cases end to end and hands off cleanly when it can't — scoped around where a wrong answer is cheap, not where it's expensive.</p></div>
-        <div><span class="label">How it gets judged</span><p>Containment rate against escalation quality — the guardrail being that a bad handoff counts as a failure, not a success.</p></div>
+        <div><span class="label">Context</span><p>Declined cards, disputed charges and forgotten subscriptions still arrive by phone, where the hold time often costs more than the transaction.</p></div>
+        <div><span class="label">What I'm building</span><p>A voice agent that resolves the routine cases end to end and hands off with full context when it can't, scoped to the calls where a wrong answer is cheap to correct.</p></div>
+        <div><span class="label">How it gets judged</span><p>Containment rate as the primary metric, with handoff quality as the guardrail: a bad escalation counts as a failure, not a resolution.</p></div>
       </div>
       <div class="wip"><i></i><span>Work in progress</span></div>
     </article>
@@ -225,6 +226,16 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
   <section class="section" id="projects">
     <div class="kicker">Projects</div>
     <div class="projects" data-reveal>
+      <div class="project">
+        <div class="project-head">
+          <h3>PaymentIntelligenceOS</h3>
+          <span class="pill">Completed</span>
+        </div>
+        <p>Crawls public merchant pages and maps the payment stack behind them, reporting what was sighted separately from what was inferred.</p>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">Crawler</span><span class="chip">Payments</span><span class="chip">0 to 1</span>
+        </div>
+      </div>
       <div class="project">
         <div class="project-head">
           <h3>Competitive Intelligence RAG App</h3>
@@ -271,7 +282,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
   </div>
 </section>
 
-<footer class="wrap">Built without frameworks. Just HTML &amp; CSS.</footer>
+<footer class="wrap">Built without frameworks. Hand-written HTML and CSS.</footer>
 
 <script>
 document.documentElement.classList.add('js');
