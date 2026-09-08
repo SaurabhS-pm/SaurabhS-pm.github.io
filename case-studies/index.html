@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Case studies — Saurabh S.</title>
+<meta name="description" content="Case studies in payments, fintech and AI — problems worked end to end, with the decisions and the evidence behind them.">
+<meta name="author" content="SaurabhS-pm">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap">
+<style>
+:root{
+  --bg:#f3f2f2; --surface:#eae9e9; --ink:#201e1d; --ink-2:#444141; --ink-3:#605d5d;
+  --accent:#ec3013; --accent-600:#dd2b0f; --accent-700:#ae1800; --accent-800:#7c1405;
+  --accent-200:#ffe0d9; --accent-300:#ffc4b8;
+  --rule:#201e1d; --divider:rgba(32,30,29,.4);
+  --font:"Archivo",system-ui,sans-serif;
+  --wrap:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent-300)}
+a{color:var(--accent-700);text-decoration:none}
+a:hover{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3{font-weight:900;letter-spacing:-.03em;margin:0}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700}
+
+/* header */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px 0;border-bottom:2px solid var(--rule)}
+.brand{display:flex;align-items:baseline;gap:12px}
+.brand b{font-weight:900;font-size:17px;letter-spacing:-.02em}
+.brand span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.nav-links{display:flex;gap:24px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.nav-links a{color:var(--ink)}
+.nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--accent)}
+
+/* hero */
+.hero{display:flex;flex-direction:column;gap:24px;padding:72px 0 56px;border-bottom:2px solid var(--rule)}
+.hero h1{font-size:clamp(40px,7vw,84px);line-height:.95;letter-spacing:-.035em;max-width:16ch}
+.hero p{max-width:56ch;font-size:clamp(17px,2vw,21px);line-height:1.5;color:var(--ink-2);text-wrap:pretty}
+
+/* cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:0;border-bottom:2px solid var(--rule)}
+.card{padding:40px 40px 40px 0;display:flex;flex-direction:column;gap:16px;border-bottom:2px solid var(--divider)}
+.card:nth-child(even){padding:40px 0 40px 40px;border-left:2px solid var(--divider)}
+.card:nth-last-child(-n+2){border-bottom:0}
+.card-head{display:flex;gap:14px;align-items:baseline;flex-wrap:wrap}
+.card-num{font-weight:900;font-size:14px;color:var(--accent)}
+.card h2{font-size:clamp(22px,2.6vw,30px);letter-spacing:-.025em;line-height:1.1;flex:1 1 240px}
+.tag{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:6px 10px;background:var(--accent-200);color:var(--accent-800)}
+.card p{font-size:16px;line-height:1.5;color:var(--ink-2);max-width:52ch;text-wrap:pretty}
+.wip{display:flex;align-items:center;gap:10px}
+.wip i{width:8px;height:8px;background:var(--accent);flex:none;display:block}
+.wip span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink-3)}
+.link-underline{align-self:flex-start;margin-top:auto;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid var(--accent);padding-bottom:3px;color:var(--ink)}
+.link-underline:hover{color:var(--accent)}
+
+footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
+
+@media (max-width:720px){
+  .card,.card:nth-child(even){padding:32px 0;border-left:0}
+  .card:nth-last-child(-n+2){border-bottom:2px solid var(--divider)}
+  .card:last-child{border-bottom:0}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="nav">
+    <div class="brand"><b>Saurabh S.</b><span>Product</span></div>
+    <nav class="nav-links">
+      <a href="../index.html#work">Work</a>
+      <a href="./" aria-current="page">Case studies</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="kicker">Case studies</div>
+    <h1>Problems worked end to end.</h1>
+    <p>The decision, the evidence behind it, and what I got wrong. Written up in full where the work is finished, summarised where it isn't.</p>
+  </section>
+
+  <section class="cards">
+
+    <article class="card">
+      <div class="card-head">
+        <span class="card-num">01</span>
+        <h2>PaymentIntelligenceOS: mapping merchant payment stacks from public pages</h2>
+        <span class="tag">Payments</span>
+      </div>
+      <p>A crawler that maps what merchants actually run, reporting what was sighted separately from what was inferred — and finding a checkout layer sitting between store and PSP on half the Indian sample.</p>
+      <a class="link-underline" href="paymentintelligenceos.html">Read the case study</a>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <span class="card-num">02</span>
+        <h2>Cross-border payments, launched in 50+ markets</h2>
+        <span class="tag">Payments</span>
+      </div>
+      <p>One payment experience for a global marketplace across dozens of currencies, regulators and card networks, owned from rail selection through market-by-market rollout.</p>
+      <a class="link-underline" href="../index.html#cases">Read the summary</a>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <span class="card-num">03</span>
+        <h2>Improving navigation in a consumer maps product</h2>
+        <span class="tag">Teardown</span>
+      </div>
+      <p>A self-directed teardown: the job the product handles poorly, the change I'd ship in a quarter, and the metric that would tell you it worked.</p>
+      <div class="wip"><i></i><span>Work in progress</span></div>
+      <a class="link-underline" href="../index.html#cases">Read the summary</a>
+    </article>
+
+    <article class="card">
+      <div class="card-head">
+        <span class="card-num">04</span>
+        <h2>A voice AI agent for payment support</h2>
+        <span class="tag">Voice AI</span>
+      </div>
+      <p>A voice agent that resolves routine payment calls end to end and hands off cleanly when it can't, judged on containment against escalation quality.</p>
+      <div class="wip"><i></i><span>Work in progress</span></div>
+      <a class="link-underline" href="../index.html#cases">Read the summary</a>
+    </article>
+
+  </section>
+</div>
+
+<footer class="wrap">Built without frameworks. Just HTML &amp; CSS.</footer>
+
+</body>
+</html>

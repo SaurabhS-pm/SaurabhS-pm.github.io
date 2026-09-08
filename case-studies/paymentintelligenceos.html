@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PaymentIntelligenceOS — Case study — Saurabh S.</title>
+<meta name="description" content="Mapping merchant payment stacks from public pages: sighted, possible and inferred kept separate, and a checkout-vendor layer found on half the Indian sample.">
+<meta name="author" content="SaurabhS-pm">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap">
+<style>
+:root{
+  --bg:#f3f2f2; --surface:#eae9e9; --ink:#201e1d; --ink-2:#444141; --ink-3:#605d5d;
+  --accent:#ec3013; --accent-600:#dd2b0f; --accent-700:#ae1800; --accent-800:#7c1405;
+  --accent-200:#ffe0d9; --accent-300:#ffc4b8;
+  --rule:#201e1d; --divider:rgba(32,30,29,.4);
+  --font:"Archivo",system-ui,sans-serif;
+  --wrap:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent-300)}
+a{color:var(--accent-700);text-decoration:none}
+a:hover{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3{font-weight:900;letter-spacing:-.03em;margin:0}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700}
+
+/* header */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px 0;border-bottom:2px solid var(--rule)}
+.brand{display:flex;align-items:baseline;gap:12px}
+.brand b{font-weight:900;font-size:17px;letter-spacing:-.02em}
+.brand span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.nav-links{display:flex;gap:24px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.nav-links a{color:var(--ink)}
+.nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--accent)}
+
+/* hero */
+.hero{display:flex;flex-direction:column;gap:24px;padding:72px 0 56px;border-bottom:2px solid var(--rule)}
+.hero h1{font-size:clamp(34px,5.6vw,64px);line-height:1;letter-spacing:-.035em;max-width:20ch}
+.hero p{max-width:60ch;font-size:clamp(17px,2vw,21px);line-height:1.5;color:var(--ink-2);text-wrap:pretty}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:6px 10px;background:var(--accent-200);color:var(--accent-800)}
+
+/* body */
+.section{padding:64px 0;border-bottom:2px solid var(--rule)}
+.section h2{margin-top:12px;font-size:clamp(26px,3.6vw,42px);line-height:1.05}
+.prose{max-width:68ch;display:flex;flex-direction:column;gap:20px;margin-top:28px}
+.prose p{font-size:17px;line-height:1.6;color:var(--ink-2);text-wrap:pretty}
+.prose strong{color:var(--ink);font-weight:800}
+
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;background:var(--surface);padding:2px 6px}
+
+/* figures */
+figure{margin:32px 0 0}
+figure img{display:block;width:100%;height:auto;border:2px solid var(--rule);background:var(--surface)}
+figcaption{margin-top:10px;font-size:13px;line-height:1.45;color:var(--ink-3);max-width:52ch}
+.side{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:36px;align-items:start;margin-top:28px}
+.side .prose{margin-top:0}
+.side figure{margin-top:0}
+
+.back{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:40px 0}
+.link-underline{font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid var(--accent);padding-bottom:3px;color:var(--ink)}
+.link-underline:hover{color:var(--accent)}
+
+footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
+
+@media (max-width:860px){
+  .side{grid-template-columns:1fr;gap:24px}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="nav">
+    <div class="brand"><b>Saurabh S.</b><span>Product</span></div>
+    <nav class="nav-links">
+      <a href="../index.html#work">Work</a>
+      <a href="./" aria-current="page">Case studies</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="kicker">Case study</div>
+    <h1>PaymentIntelligenceOS: mapping merchant payment stacks from public pages</h1>
+    <p>Fifty merchants across five countries, 170 signatures, and one rule: never report an assumption as an observation.</p>
+    <div class="tags"><span class="tag">Payments</span><span class="tag">Crawler</span><span class="tag">0 to 1</span></div>
+  </section>
+
+  <section class="section">
+    <div class="kicker">01</div>
+    <h2>Problem</h2>
+    <div class="prose">
+      <p>Payments teams guess at what a prospect already runs. Existing stack-detection tools report a platform and sometimes a gateway, but they flatten everything into a single verdict: you cannot tell what was observed from what was assumed. For a payments conversation that distinction is the whole point. "They use Stripe" and "they are on Shopify, so probably Shopify Payments" are different claims, and only one of them survives contact with the merchant.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="kicker">02</div>
+    <h2>Approach</h2>
+    <div class="prose">
+      <p>I built a crawler that reads public pages only. No accounts, no logins, no forms submitted, robots.txt honoured, two seconds between requests, at most six pages per site and one crawl per site per week. Detection is deterministic signature matching with no model in the path, and every detection stores the signature id, the page URL and the matched snippet, capped at 200 characters.</p>
+      <p>Fifty merchants across the US, Canada, the UK, Japan and India. Forty-eight crawled cleanly. 170 signatures covering 61 vendors across platform, PSP, wallet, BNPL and checkout vendor. Fifty merchants is a sample, not a census. The regional finding below is a hypothesis worth testing at scale, not a market statistic.</p>
+    </div>
+    <figure>
+      <img src="../assets/case-studies/pio-explorer.png" alt="The PaymentIntelligenceOS merchant explorer: filter facets counting country, platform, PSP, wallet, BNPL and checkout vendor, above a table of crawled merchants where inferred detections carry an INFERRED label.">
+      <figcaption>The explorer: every facet counted across the sample, and each detection carrying its state — sighted, possible or inferred — in the row itself rather than in a footnote.</figcaption>
+    </figure>
+  </section>
+
+  <section class="section">
+    <div class="kicker">03</div>
+    <h2>Key decisions</h2>
+
+    <div class="side">
+      <div class="prose">
+        <p><strong>Three states, not one.</strong> Sighted, possible and inferred are recorded separately and shown separately. This matters most for PSP: on a Shopify store the processor cannot be sighted at all, because Shopify Payments is server-side and emits no client-side script. PSP coverage is 10 percent sighted and 75 percent once the platform-native inference is applied. Reporting only the higher number would have been the flattering choice and the wrong one.</p>
+      </div>
+      <figure>
+        <img src="../assets/case-studies/pio-merchant-herschel.png" alt="Merchant detail for herschel.com, showing Stripe sighted as the PSP with an evidence row citing psp.stripe.js on the payment_info page.">
+        <figcaption>herschel.com, the 10 percent case: the PSP is sighted, not assumed — <code>psp.stripe.js</code> firing on the payment-info page, with the matched snippet stored next to it.</figcaption>
+      </figure>
+    </div>
+
+    <div class="prose">
+      <p><strong>Deleting the browser step.</strong> To sight PSPs directly I built a headless browser that added an item to the cart and opened checkout. Standard Shopify robots.txt disallows /cart and /checkout, which we honour, so I tested it on five sites whose robots.txt permits both. One reached a checkout. It carried no PSP scripts, for the reason above. I deleted the feature rather than carry unproven code, and wrote down why.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="kicker">04</div>
+    <h2>What I found</h2>
+    <div class="prose">
+      <p>Coverage across the sample: platform 77 percent, wallets 54 percent, BNPL 10 percent, checkout vendor 17 percent.</p>
+    </div>
+
+    <div class="side">
+      <div class="prose">
+        <p>The finding worth the whole exercise is regional. Half the Indian merchants sampled, five of ten, run a third-party checkout vendor between the store and the PSP: GoKwik on all five, with Shopflo showing as a weaker signal on one of them. That layer appears on no merchant in the other four countries. It changes who the commercial conversation is with, because the checkout vendor owns the payment method mix that the PSP used to own.</p>
+      </div>
+      <figure>
+        <img src="../assets/case-studies/pio-merchant-gokwik.png" alt="Merchant detail for beminimalist.co in India, showing GoKwik sighted as the checkout vendor, Shopflo marked possible, and the PSP only inferred from the platform.">
+        <figcaption>beminimalist.co: GoKwik sighted as the checkout vendor, Shopflo the weaker signal beneath it, and the PSP inferred only because no external PSP script fired on any page checked.</figcaption>
+      </figure>
+    </div>
+
+    <div class="prose">
+      <p>Separately, making the unknown-host leaderboard show only hosts nobody had reviewed yet immediately exposed two live detection misses: a Square subdomain my pattern had pinned one level too deep, and a Klarna EU domain no pattern covered. Both were on sites already crawled. Both are fixed.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="kicker">05</div>
+    <h2>What I would do differently</h2>
+    <div class="prose">
+      <p><strong>Start from the question, not the crawler.</strong> The checkout-vendor layer was the most commercially interesting output and I found it incidentally. Sampling India deliberately on day one would have surfaced it in an afternoon.</p>
+      <p><strong>Build the review queue first.</strong> The unknown-host list was noise for a week because reviewed hosts were never marked as reviewed. It found two real bugs within a minute of being cleaned.</p>
+      <p><strong>Accept the ceiling earlier.</strong> No amount of crawler work sights a processor behind a server-side platform. That is a signal problem, not an engineering one, and the next version should spend its effort on non-Shopify merchants and on checkout pages that are actually permitted, rather than on a better browser.</p>
+    </div>
+  </section>
+
+  <div class="back">
+    <a class="link-underline" href="./">All case studies</a>
+    <a class="link-underline" href="../index.html#contact">Get in touch</a>
+  </div>
+</div>
+
+<footer class="wrap">Built without frameworks. Just HTML &amp; CSS.</footer>
+
+</body>
+</html>
