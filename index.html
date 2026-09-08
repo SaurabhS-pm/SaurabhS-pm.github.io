@@ -1,499 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Saurabh S. — Senior Product Leader</title>
-  <style>
-    /* ── Reset & base ───────────────────────────────────────────────────── */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saurabh S. — Senior Product Leader</title>
+<meta name="description" content="Senior Product Leader with 12+ years in fintech, consumer payments and customer growth. Building fintech and AI products in the payments space.">
+<meta name="author" content="SaurabhS-pm">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap">
+<style>
+:root{
+  --bg:#f3f2f2; --surface:#eae9e9; --ink:#201e1d; --ink-2:#444141; --ink-3:#605d5d;
+  --accent:#ec3013; --accent-600:#dd2b0f; --accent-700:#ae1800; --accent-800:#7c1405;
+  --accent-200:#ffe0d9; --accent-300:#ffc4b8;
+  --rule:#201e1d; --divider:rgba(32,30,29,.4);
+  --font:"Archivo",system-ui,sans-serif;
+  --wrap:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent-300)}
+a{color:var(--accent-700);text-decoration:none}
+a:hover{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3{font-weight:900;letter-spacing:-.03em;margin:0}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700}
+.label{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);font-weight:700}
+.rule-top{border-top:2px solid var(--rule)}
+.rule-bottom{border-bottom:2px solid var(--rule)}
 
-    html { scroll-behavior: smooth; }
+/* header */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px 0;border-bottom:2px solid var(--rule)}
+.brand{display:flex;align-items:baseline;gap:12px}
+.brand b{font-weight:900;font-size:17px;letter-spacing:-.02em}
+.brand span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.nav-links{display:flex;gap:24px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.nav-links a{color:var(--ink)}
+.nav-links a:hover{color:var(--accent)}
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-                   Helvetica, Arial, sans-serif;
-      background: #ffffff;
-      color: #1a1a1a;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
+/* hero */
+.hero{display:flex;flex-direction:column;gap:32px;padding:88px 0 72px;border-bottom:2px solid var(--rule)}
+.hero h1{font-size:clamp(44px,8.5vw,104px);line-height:.92;letter-spacing:-.035em;max-width:14ch}
+.hero p{max-width:56ch;font-size:clamp(17px,2vw,21px);line-height:1.5;color:var(--ink-2);text-wrap:pretty}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;padding:14px 22px;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;border:2px solid var(--ink);transition:background .15s,color .15s}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn-primary:hover{background:var(--accent-600);border-color:var(--accent-600);color:#fff}
+.btn-secondary{color:var(--ink)}
+.btn-secondary:hover{background:var(--ink);color:var(--bg)}
+.affil{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;padding-top:8px}
 
-    /* ── Shared layout ──────────────────────────────────────────────────── */
-    .container {
-      max-width: 860px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+/* stats */
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));border-bottom:2px solid var(--rule)}
+.stat{padding:40px 32px;border-right:2px solid var(--rule)}
+.stat:first-child{padding-left:0}
+.stat:last-child{border-right:0;padding-right:0}
+.stat b{display:block;font-weight:900;font-size:clamp(32px,4vw,44px);letter-spacing:-.03em;line-height:1}
+.stat span{display:block;margin-top:12px;font-size:15px;line-height:1.45;color:var(--ink-2);max-width:26ch}
 
-    .section-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: #999;
-      margin-bottom: 20px;
-    }
+/* what I work on */
+.section{padding:80px 0;border-bottom:2px solid var(--rule)}
+.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));border-top:2px solid var(--rule);margin-top:24px}
+.grid-2 > li{list-style:none;padding:28px 32px 28px 0;border-bottom:2px solid var(--divider);font-size:17px;line-height:1.45;text-wrap:pretty}
+.grid-2 > li:nth-child(even){padding:28px 0 28px 32px}
+.grid-2 > li:nth-last-child(-n+2){border-bottom:0}
+.grid-2{padding:0;margin-block:24px 0}
 
-    /* ── HERO ───────────────────────────────────────────────────────────── */
-    .hero {
-      background: #0f1117;
-      color: #ffffff;
-      padding: 80px 24px 72px;
-    }
+/* case studies */
+.cases-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:48px}
+.cases-head h2{margin-top:12px;font-size:clamp(30px,4.5vw,52px);line-height:1}
+.wip{display:flex;align-items:center;gap:10px}
+.wip i{width:8px;height:8px;background:var(--accent);flex:none;display:block}
+.wip span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink-3)}
+.case{padding:40px 0;border-top:2px solid var(--rule)}
+.case:last-of-type{border-bottom:2px solid var(--rule)}
+.case-head{display:flex;gap:20px;align-items:baseline;flex-wrap:wrap}
+.case-num{font-weight:900;font-size:14px;color:var(--accent)}
+.case-head h3{font-size:clamp(24px,3.2vw,36px);letter-spacing:-.025em;line-height:1.05;flex:1 1 320px}
+.tag{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:6px 10px;background:var(--accent-200);color:var(--accent-800)}
+.case-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;margin-top:28px}
+.case-cols .label{display:block;padding-bottom:10px;border-bottom:2px solid var(--divider)}
+.case-cols p{margin-top:14px;font-size:16px;line-height:1.5;color:var(--ink-2);text-wrap:pretty}
+.case .wip{margin-top:20px}
 
-    .hero-inner {
-      max-width: 860px;
-      margin: 0 auto;
-    }
+/* projects */
+.projects{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));border-top:2px solid var(--rule);margin-top:24px}
+.project{padding:36px 40px 36px 0;display:flex;flex-direction:column;gap:16px}
+.project + .project{padding:36px 0 36px 40px;border-left:2px solid var(--divider)}
+.project-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.project h3{font-size:26px;letter-spacing:-.02em}
+.pill{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:5px 9px;border:2px solid var(--ink)}
+.pill-accent{border-color:var(--accent);color:var(--accent-700)}
+.project p{font-size:16px;line-height:1.5;color:var(--ink-2);max-width:52ch;text-wrap:pretty}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font-size:12px;font-weight:600;padding:6px 10px;background:var(--surface)}
+.link-underline{align-self:flex-start;margin-top:4px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid var(--accent);padding-bottom:3px;color:var(--ink)}
+.link-underline:hover{color:var(--accent)}
 
-    .hero-name {
-      font-size: 2.4rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      margin-bottom: 18px;
-      line-height: 1.15;
-    }
+/* skills */
+.skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
+.skills span{font-size:15px;font-weight:600;padding:10px 16px;border:2px solid var(--ink)}
 
-    .hero-sub {
-      font-size: 1.05rem;
-      color: #c8ccd6;
-      max-width: 600px;
-      margin-bottom: 12px;
-      line-height: 1.65;
-    }
+/* contact */
+.contact{background:var(--accent);color:#fff}
+.contact h2{font-size:clamp(36px,7vw,84px);line-height:.95;letter-spacing:-.035em;max-width:16ch}
+.contact .wrap{padding-top:88px;padding-bottom:88px}
+.contact-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:24px;margin-top:56px;border-top:2px solid #fff;padding-top:32px}
+.contact-links a{color:#fff;font-size:clamp(16px,2vw,20px);font-weight:700;word-break:break-all}
+.contact-links a:hover{color:#fff;opacity:.75}
 
-    .hero-italic {
-      font-style: italic;
-      font-size: 0.88rem;
-      color: #7a8099;
-      margin-bottom: 36px;
-    }
+footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 
-    .hero-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      padding: 10px 22px;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 600;
-      text-decoration: none;
-      cursor: pointer;
-      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
-    }
-
-    .btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.25); }
-
-    .btn-filled {
-      background: #ffffff;
-      color: #0f1117;
-      border: 2px solid #ffffff;
-    }
-    .btn-filled:hover { background: #e8eaf0; border-color: #e8eaf0; }
-
-    .btn-outline {
-      background: transparent;
-      color: #ffffff;
-      border: 2px solid rgba(255,255,255,0.35);
-    }
-    .btn-outline:hover { border-color: #ffffff; background: rgba(255,255,255,0.07); }
-
-    /* SVG icon helper */
-    .btn svg { flex-shrink: 0; }
-
-    /* ── STATS ──────────────────────────────────────────────────────────── */
-    .stats-section {
-      background: #f4f5f7;
-      padding: 52px 24px;
-    }
-
-    .stats-grid {
-      max-width: 860px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .stat-card {
-      background: #ffffff;
-      border-radius: 12px;
-      padding: 28px 24px;
-      border: 1px solid #e4e6ea;
-      transition: box-shadow 0.2s ease, transform 0.2s ease;
-    }
-    .stat-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.08); transform: translateY(-3px); }
-
-    .stat-value {
-      font-size: 1.65rem;
-      font-weight: 800;
-      color: #0f1117;
-      margin-bottom: 6px;
-      letter-spacing: -0.3px;
-    }
-
-    .stat-desc {
-      font-size: 0.83rem;
-      color: #666;
-      line-height: 1.45;
-    }
-
-    /* ── WHAT I WORK ON ─────────────────────────────────────────────────── */
-    .work-section {
-      padding: 64px 24px;
-    }
-
-    .work-list {
-      max-width: 860px;
-      margin: 0 auto;
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .work-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
-      font-size: 0.95rem;
-      color: #2a2a2a;
-      line-height: 1.6;
-    }
-
-    .work-list li::before {
-      content: "→";
-      color: #0f1117;
-      font-weight: 700;
-      font-size: 1rem;
-      flex-shrink: 0;
-      margin-top: 1px;
-    }
-
-    /* ── PROJECTS ───────────────────────────────────────────────────────── */
-    .projects-section {
-      background: #f4f5f7;
-      padding: 64px 24px;
-    }
-
-    .project-card {
-      background: #ffffff;
-      border: 1.5px solid #e0e2e8;
-      border-radius: 14px;
-      padding: 30px 32px;
-      transition: box-shadow 0.2s ease, transform 0.2s ease;
-    }
-    .project-card:hover { box-shadow: 0 10px 36px rgba(0,0,0,0.09); transform: translateY(-3px); }
-
-    .project-header {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-
-    .project-title {
-      font-size: 1.15rem;
-      font-weight: 700;
-      color: #0f1117;
-    }
-
-    .badge-inprogress {
-      background: #fff3cd;
-      color: #856404;
-      border: 1px solid #ffc107;
-      border-radius: 20px;
-      padding: 3px 12px;
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.04em;
-      white-space: nowrap;
-    }
-
-    .project-desc {
-      font-size: 0.9rem;
-      color: #444;
-      line-height: 1.65;
-      margin-bottom: 18px;
-    }
-
-    .stack-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 20px;
-    }
-
-    .tag {
-      background: #f0f1f5;
-      color: #333;
-      border-radius: 6px;
-      padding: 4px 12px;
-      font-size: 0.78rem;
-      font-weight: 600;
-    }
-
-    .project-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #0f1117;
-      text-decoration: none;
-      border-bottom: 2px solid #0f1117;
-      padding-bottom: 1px;
-      transition: opacity 0.15s;
-    }
-    .project-link:hover { opacity: 0.6; }
-
-    /* ── SKILLS ─────────────────────────────────────────────────────────── */
-    .skills-section {
-      padding: 64px 24px;
-    }
-
-    .skills-pills {
-      max-width: 860px;
-      margin: 0 auto;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .skill-pill {
-      background: #0f1117;
-      color: #ffffff;
-      border-radius: 30px;
-      padding: 8px 18px;
-      font-size: 0.82rem;
-      font-weight: 600;
-      transition: background 0.15s ease, transform 0.15s ease;
-    }
-    .skill-pill:hover { background: #2a2d3a; transform: translateY(-2px); }
-
-    /* ── CONNECT ────────────────────────────────────────────────────────── */
-    .connect-section {
-      background: #0f1117;
-      color: #ffffff;
-      padding: 64px 24px;
-    }
-
-    .connect-inner {
-      max-width: 860px;
-      margin: 0 auto;
-    }
-
-    .connect-section .section-label { color: #555e7a; }
-
-    .connect-links {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-    }
-
-    .connect-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: #c8ccd6;
-      text-decoration: none;
-      font-size: 0.92rem;
-      transition: color 0.15s ease;
-    }
-    .connect-link:hover { color: #ffffff; }
-
-    .connect-link svg { opacity: 0.6; flex-shrink: 0; }
-    .connect-link:hover svg { opacity: 1; }
-
-    /* ── Footer ─────────────────────────────────────────────────────────── */
-    .footer {
-      background: #080a0f;
-      text-align: center;
-      padding: 20px 24px;
-      font-size: 0.75rem;
-      color: #444;
-    }
-
-    /* ── Responsive ─────────────────────────────────────────────────────── */
-    @media (max-width: 640px) {
-      .hero-name { font-size: 1.85rem; }
-      .stats-grid { grid-template-columns: 1fr; }
-      .project-card { padding: 22px 20px; }
-    }
-
-    @media (max-width: 420px) {
-      .hero { padding: 56px 20px 52px; }
-      .btn { padding: 9px 16px; font-size: 0.82rem; }
-    }
-  </style>
+[data-reveal]{opacity:1}
+.js [data-reveal].pre{opacity:0;transform:translateY(18px)}
+.js [data-reveal]{transition:opacity .62s cubic-bezier(.2,.7,.3,1),transform .62s cubic-bezier(.2,.7,.3,1)}
+@media (prefers-reduced-motion:reduce){.js [data-reveal].pre{opacity:1;transform:none}}
+@media (max-width:640px){
+  .stat{padding:32px 0;border-right:0;border-bottom:2px solid var(--divider)}
+  .stat:last-child{border-bottom:0}
+  .grid-2 > li,.grid-2 > li:nth-child(even){padding:24px 0}
+  .project,.project + .project{padding:32px 0;border-left:0}
+  .project + .project{border-top:2px solid var(--divider)}
+}
+</style>
 </head>
 <body>
 
-  <!-- ═══════════════════════════════════════════════════════ HERO -->
-  <section class="hero">
-    <div class="hero-inner">
-      <p class="section-label" style="color:#3d4460">About me</p>
-      <h1 class="hero-name">Saurabh S. 👋</h1>
-      <p class="hero-sub">
-        Senior Product Leader with 12+ years in fintech, consumer payments and customer growth.
-        Currently building fintech and AI products in the payments space.
-      </p>
-      <p class="hero-italic">
-        Amazon Tokyo &amp; Toronto &nbsp;·&nbsp; BMO Financial &nbsp;·&nbsp; RAG and LLMs
-      </p>
-      <div class="hero-buttons">
-        <!-- LinkedIn — filled white -->
-        <a href="https://www.linkedin.com/in/saurabhsrivast/" target="_blank" rel="noopener" class="btn btn-filled">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-          </svg>
-          LinkedIn
-        </a>
-        <!-- GitHub — outline -->
-        <a href="https://github.com/SaurabhS-pm" target="_blank" rel="noopener" class="btn btn-outline">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-          </svg>
-          GitHub
-        </a>
-        <!-- Email — outline -->
-        <a href="mailto:writeto.saurabhs@gmail.com" class="btn btn-outline">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="4" width="20" height="16" rx="2"/>
-            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-          </svg>
-          Email
-        </a>
+<div class="wrap">
+  <header class="nav">
+    <div class="brand"><b>Saurabh S.</b><span>Product</span></div>
+    <nav class="nav-links">
+      <a href="#work">Work</a>
+      <a href="#cases">Case studies</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero" data-reveal>
+    <div class="kicker">Senior Product Leader</div>
+    <h1>Payments, growth, and AI that ships.</h1>
+    <p>12+ years in fintech, consumer payments and customer growth. Currently building fintech and AI products in the payments space.</p>
+    <div class="actions">
+      <a class="btn btn-primary" href="mailto:writeto.saurabhs@gmail.com">Get in touch</a>
+      <a class="btn btn-secondary" href="https://www.linkedin.com/in/saurabhsrivast/">LinkedIn</a>
+      <a class="btn btn-secondary" href="https://github.com/SaurabhS-pm">GitHub</a>
+    </div>
+    <div class="affil">Global marketplace, Tokyo &amp; Toronto · North American bank · RAG and LLMs</div>
+  </section>
+
+  <section class="stats">
+    <div class="stat" data-reveal><b>Multi-billion $</b><span>GMV on payments and engagement platforms</span></div>
+    <div class="stat" data-reveal><b>Millions</b><span>Of users on engagement platforms I built</span></div>
+    <div class="stat" data-reveal><b>50+ markets</b><span>Cross-border payment launch</span></div>
+  </section>
+
+  <section class="section" id="work">
+    <div class="kicker">What I work on</div>
+    <ul class="grid-2" data-reveal>
+      <li>Multi-billion dollar consumer payment platforms — wallets, subscriptions, cross-border rails</li>
+      <li>Engagement and gamification platforms — habit-forming loops, loyalty-linked payments, member growth</li>
+      <li>0 to 1 product launches with full lifecycle ownership from strategy through GTM</li>
+      <li>Agentic AI and RAG tools that automate manual PM workflows</li>
+      <li>ML-powered experimentation — 10+ active A/B tests, decisions grounded in data</li>
+      <li>Cross-functional alignment with Country and Worldwide VPs</li>
+    </ul>
+  </section>
+
+  <section class="section" id="cases">
+    <div class="cases-head">
+      <div>
+        <div class="kicker">Case studies</div>
+        <h2>Three problems, worked end to end.</h2>
+      </div>
+      <div class="wip"><i></i><span>Work in progress</span></div>
+    </div>
+
+    <article class="case" data-reveal>
+      <div class="case-head">
+        <span class="case-num">01</span>
+        <h3>Cross-border payments, launched in 50+ markets</h3>
+        <span class="tag">Payments</span>
+      </div>
+      <div class="case-cols">
+        <div><span class="label">Context</span><p>A global marketplace needed one payment experience across dozens of currencies, regulators and card networks.</p></div>
+        <div><span class="label">What I did</span><p>Owned strategy through GTM: rail selection, pricing, risk and compliance sequencing, market-by-market rollout.</p></div>
+        <div><span class="label">Outcome</span><p>Live in 50+ markets on a platform carrying multi-billion dollar GMV.</p></div>
+      </div>
+    </article>
+
+    <article class="case" data-reveal>
+      <div class="case-head">
+        <span class="case-num">02</span>
+        <h3>Improving navigation in a consumer maps product</h3>
+        <span class="tag">Teardown</span>
+      </div>
+      <div class="case-cols">
+        <div><span class="label">The gap</span><p>A self-directed teardown: which job the product handles poorly, and the evidence for it.</p></div>
+        <div><span class="label">Proposal</span><p>The change I'd ship, scoped to something a team could actually build in a quarter.</p></div>
+        <div><span class="label">How I'd measure it</span><p>The metric that would tell you it worked, and the guardrail that would tell you it didn't.</p></div>
+      </div>
+      <div class="wip"><i></i><span>Work in progress</span></div>
+    </article>
+
+    <article class="case" data-reveal>
+      <div class="case-head">
+        <span class="case-num">03</span>
+        <h3>A voice AI agent for payment support</h3>
+        <span class="tag">Voice AI</span>
+      </div>
+      <div class="case-cols">
+        <div><span class="label">Context</span><p>Payment questions — a declined card, a disputed charge, a subscription someone forgot — arrive by phone, where hold times cost more than the transaction.</p></div>
+        <div><span class="label">What I'm building</span><p>A voice agent that resolves the common cases end to end and hands off cleanly when it can't — scoped around where a wrong answer is cheap, not where it's expensive.</p></div>
+        <div><span class="label">How it gets judged</span><p>Containment rate against escalation quality — the guardrail being that a bad handoff counts as a failure, not a success.</p></div>
+      </div>
+      <div class="wip"><i></i><span>Work in progress</span></div>
+    </article>
+  </section>
+
+  <section class="section" id="projects">
+    <div class="kicker">Projects</div>
+    <div class="projects" data-reveal>
+      <div class="project">
+        <div class="project-head">
+          <h3>Competitive Intelligence RAG App</h3>
+          <span class="pill">Completed</span>
+        </div>
+        <p>Scrapes App Store and Google Play reviews, answers product questions about any competitor app with sentiment analysis. Built because I spent too many hours reading reviews manually.</p>
+        <div class="chips">
+          <span class="chip">Python</span><span class="chip">ChromaDB</span><span class="chip">OpenRouter</span>
+          <span class="chip">Streamlit</span><span class="chip">ONNX</span><span class="chip">RAG</span>
+        </div>
+        <a class="link-underline" href="https://github.com/SaurabhS-pm/competitive-intel-rag">View on GitHub</a>
+      </div>
+      <div class="project">
+        <div class="project-head">
+          <h3>Voice AI support agent</h3>
+          <span class="pill pill-accent">In progress</span>
+        </div>
+        <p>A voice agent for payment support calls — resolves routine cases, escalates the rest with context attached.</p>
+        <div class="chips">
+          <span class="chip">Voice AI</span><span class="chip">LLMs</span><span class="chip">Python</span><span class="chip">Agentic AI</span>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════════════════ STATS -->
-  <section class="stats-section">
-    <div class="stats-grid">
-      <div class="stat-card">
-        <div class="stat-value">Multi-billion $</div>
-        <div class="stat-desc">GMV on payments and engagement platforms</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">Millions</div>
-        <div class="stat-desc">Of users on engagement platforms I built</div>
-      </div>
-      <div class="stat-card">
-        <div class="stat-value">50+ markets</div>
-        <div class="stat-desc">Cross-border payment launch</div>
-      </div>
+  <section class="section">
+    <div class="kicker">Skills &amp; tools</div>
+    <div class="skills" data-reveal>
+      <span>RAG</span><span>LLMs</span><span>Python</span><span>Claude API</span><span>Cursor</span>
+      <span>Fintech</span><span>Consumer Payments</span><span>0 to 1 Products</span><span>Agentic AI</span>
+      <span>A/B Experimentation</span><span>Mastercard / Card Networks</span><span>Subscription Platforms</span>
     </div>
   </section>
+</div>
 
-  <!-- ═══════════════════════════════════════════════════════ WHAT I WORK ON -->
-  <section class="work-section">
-    <div class="container">
-      <p class="section-label">What I work on</p>
-      <ul class="work-list">
-        <li>Multi-billion dollar consumer payment platforms — wallets, subscriptions, cross-border rails</li>
-        <li>Engagement and gamification platforms — habit-forming loops, loyalty-linked payments, member growth</li>
-        <li>0 to 1 product launches with full lifecycle ownership from strategy through GTM</li>
-        <li>Agentic AI and RAG tools that automate manual PM workflows</li>
-        <li>ML-powered experimentation — 10+ active A/B tests, decisions grounded in data</li>
-        <li>Cross-functional alignment with Country and Worldwide VPs</li>
-      </ul>
+<section class="contact" id="contact">
+  <div class="wrap">
+    <h2>Open to senior product roles.</h2>
+    <div class="contact-links">
+      <a href="mailto:writeto.saurabhs@gmail.com">writeto.saurabhs@gmail.com</a>
+      <a href="https://www.linkedin.com/in/saurabhsrivast/">linkedin.com/in/saurabhsrivast</a>
+      <a href="https://github.com/SaurabhS-pm">github.com/SaurabhS-pm</a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════════════════════════════════════════════ PROJECTS -->
-  <section class="projects-section">
-    <div class="container">
-      <p class="section-label">Projects</p>
-      <div class="project-card">
-      <div class="project-header">
-        <span class="project-title">Competitive Intelligence RAG App</span>
-        <span class="badge-completed">Completed</span>
-      </div>
-      <p class="project-desc">
-        Scrapes App Store and Google Play reviews, answers product questions about any
-        competitor app with sentiment analysis. Built because I spent too many hours
-        reading reviews manually.
-      </p>
-      <div class="stack-tags">
-        <span class="tag">Python</span>
-        <span class="tag">ChromaDB</span>
-        <span class="tag">OpenRouter</span>
-        <span class="tag">Streamlit</span>
-        <span class="tag">ONNX</span>
-        <span class="tag">RAG</span>
-      </div>
-      <a href="https://github.com/SaurabhS-pm/competitive-intel-rag" target="_blank" rel="noopener" class="project-link">
-        View on GitHub
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M7 17L17 7M7 7h10v10"/>
-        </svg>
-      </a>
-      </div><!-- /.project-card -->
-    </div><!-- /.container -->
-  </section>
+<footer class="wrap">Built without frameworks. Just HTML &amp; CSS.</footer>
 
-  <!-- ═══════════════════════════════════════════════════════ SKILLS -->
-  <section class="skills-section">
-    <div class="container">
-      <p class="section-label">Skills &amp; tools</p>
-      <div class="skills-pills">
-        <span class="skill-pill">RAG</span>
-        <span class="skill-pill">LLMs</span>
-        <span class="skill-pill">Python</span>
-        <span class="skill-pill">Claude API</span>
-        <span class="skill-pill">Cursor</span>
-        <span class="skill-pill">Fintech</span>
-        <span class="skill-pill">Consumer Payments</span>
-        <span class="skill-pill">0 to 1 Products</span>
-        <span class="skill-pill">Agentic AI</span>
-        <span class="skill-pill">A/B Experimentation</span>
-        <span class="skill-pill">Mastercard / Card Networks</span>
-        <span class="skill-pill">Subscription Platforms</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════ CONNECT -->
-  <section class="connect-section">
-    <div class="connect-inner">
-      <p class="section-label">Connect</p>
-      <div class="connect-links">
-        <a href="https://www.linkedin.com/in/saurabhsrivast/" target="_blank" rel="noopener" class="connect-link">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-          </svg>
-          linkedin.com/in/saurabhsrivast/
-        </a>
-        <a href="mailto:writeto.saurabhs@gmail.com" class="connect-link">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="4" width="20" height="16" rx="2"/>
-            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-          </svg>
-          writeto.saurabhs@gmail.com
-        </a>
-        <a href="https://github.com/SaurabhS-pm" target="_blank" rel="noopener" class="connect-link">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/>
-          </svg>
-          github.com/SaurabhS-pm
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════════════════════════ FOOTER -->
-  <footer class="footer">
-    Built without frameworks. Just HTML &amp; CSS.
-  </footer>
-
+<script>
+document.documentElement.classList.add('js');
+(function () {
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var els = [].slice.call(document.querySelectorAll('[data-reveal]'));
+  if (reduced || !('IntersectionObserver' in window) || !els.length) return;
+  var hidden = els.filter(function (el) {
+    if (el.getBoundingClientRect().top < window.innerHeight) return false;
+    el.classList.add('pre');
+    return true;
+  });
+  if (!hidden.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (!e.isIntersecting) return;
+      e.target.classList.remove('pre');
+      io.unobserve(e.target);
+    });
+  }, { rootMargin: '0px 0px -8% 0px', threshold: 0.05 });
+  hidden.forEach(function (el) { io.observe(el); });
+  setTimeout(function () {
+    hidden.forEach(function (el) {
+      if (el.getBoundingClientRect().top < window.innerHeight) el.classList.remove('pre');
+    });
+  }, 800);
+})();
+</script>
 </body>
 </html>
