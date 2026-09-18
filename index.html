@@ -88,10 +88,11 @@ p{margin:0}
 .case .wip{margin-top:20px}
 
 /* projects */
-.projects{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--rule);margin-top:24px}
+.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:2px solid var(--rule);margin-top:24px}
 .project{padding:36px 32px;display:flex;flex-direction:column;gap:16px;border-left:2px solid var(--divider)}
-.project:first-child{padding-left:0;border-left:0}
-.project:last-child{padding-right:0}
+.project:nth-child(odd){padding-left:0;border-left:0}
+.project:nth-child(even){padding-right:0}
+.project:nth-child(n+3){border-top:2px solid var(--divider)}
 .project-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
 .project h3{font-size:26px;letter-spacing:-.02em}
 .pill{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:5px 9px;border:2px solid var(--ink)}
@@ -177,13 +178,27 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
     <div class="cases-head">
       <div>
         <div class="kicker">Case studies</div>
-        <h2>Three problems I've taken apart.</h2>
+        <h2>Five problems I've taken apart.</h2>
       </div>
     </div>
 
     <article class="case" data-reveal>
       <div class="case-head">
         <span class="case-num">01</span>
+        <h3>NexRead: ranking what to read next by intent, using an LLM</h3>
+        <span class="tag">AI Recommendations</span>
+      </div>
+      <div class="case-cols">
+        <div><span class="label">Context</span><p>Learning anything as an adult means assembling your own curriculum across platforms that each recommend only their own inventory, and none of which can accept a goal you state out loud.</p></div>
+        <div><span class="label">What I did</span><p>Built a ranked brief from three tap answers over a curated library of 1,900+ pieces from over 100 sources, with one model call per visit and a reason attached to every recommendation.</p></div>
+        <div><span class="label">Outcome</span><p>Live and serving in about three seconds for under a penny a read, collecting nothing about the reader.</p></div>
+      </div>
+      <a class="link-underline" style="margin-top:24px" href="case-studies/nexread.html">Read the case study</a>
+    </article>
+
+    <article class="case" data-reveal>
+      <div class="case-head">
+        <span class="case-num">02</span>
         <h3>PaymentIntelligenceOS: mapping merchant payment stacks from public pages</h3>
         <span class="tag">Payments</span>
       </div>
@@ -197,7 +212,21 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 
     <article class="case" data-reveal>
       <div class="case-head">
-        <span class="case-num">02</span>
+        <span class="case-num">03</span>
+        <h3>Competitive Intelligence RAG: answering product questions from a competitor's reviews</h3>
+        <span class="tag">RAG</span>
+      </div>
+      <div class="case-cols">
+        <div><span class="label">Context</span><p>PMs monitor competitors by reading reviews, which does not scale. A store's rating summary gives a number and no reason; a listening tool is priced for a marketing team, not a PM with a question on a Tuesday.</p></div>
+        <div><span class="label">What I did</span><p>Built a RAG tool that pulls 500 reviews per app from both stores, embeds them locally, and answers a plain-English question from the retrieved ones with a sentiment breakdown attached.</p></div>
+        <div><span class="label">Outcome</span><p>A confidence threshold showed five to ten percent of reviews are genuinely ambiguous, so the breakdown reports them as uncertain rather than implying precision the data cannot support.</p></div>
+      </div>
+      <a class="link-underline" style="margin-top:24px" href="case-studies/competitive-intel-rag.html">Read the case study</a>
+    </article>
+
+    <article class="case" data-reveal>
+      <div class="case-head">
+        <span class="case-num">04</span>
         <h3>Cross-border payments, launched in 50+ markets</h3>
         <span class="tag">Payments</span>
       </div>
@@ -210,7 +239,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 
     <article class="case" data-reveal>
       <div class="case-head">
-        <span class="case-num">03</span>
+        <span class="case-num">05</span>
         <h3>A voice AI agent for payment support</h3>
         <span class="tag">Voice AI</span>
       </div>
@@ -228,6 +257,17 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
     <div class="projects" data-reveal>
       <div class="project">
         <div class="project-head">
+          <h3>NexRead</h3>
+          <span class="pill pill-accent">Live</span>
+        </div>
+        <p>Three taps in, a ranked set of specific things to read, watch or listen to next, drawn from a curated library across every platform. Built because the material exists and nothing indexes it by intent.</p>
+        <div class="chips">
+          <span class="chip">LLM ranking</span><span class="chip">Deno</span><span class="chip">Postgres</span><span class="chip">Recommenders</span><span class="chip">0 to 1</span>
+        </div>
+        <a class="link-underline" href="https://nexread.nexread.deno.net">View the site</a>
+      </div>
+      <div class="project">
+        <div class="project-head">
           <h3>PaymentIntelligenceOS</h3>
           <span class="pill">Completed</span>
         </div>
@@ -235,6 +275,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
         <div class="chips">
           <span class="chip">Python</span><span class="chip">Crawler</span><span class="chip">Payments</span><span class="chip">0 to 1</span>
         </div>
+        <a class="link-underline" href="case-studies/paymentintelligenceos.html">Read the case study</a>
       </div>
       <div class="project">
         <div class="project-head">
@@ -246,6 +287,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
           <span class="chip">Python</span><span class="chip">ChromaDB</span><span class="chip">OpenRouter</span>
           <span class="chip">Streamlit</span><span class="chip">ONNX</span><span class="chip">RAG</span>
         </div>
+        <a class="link-underline" href="case-studies/competitive-intel-rag.html">Read the case study</a>
         <a class="link-underline" href="https://github.com/SaurabhS-pm/competitive-intel-rag">View on GitHub</a>
       </div>
       <div class="project">

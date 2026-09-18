@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NexRead — Case study — Saurabh S.</title>
+<meta name="description" content="NexRead: one place to say where you are in your career and get a ranked set of specific things to read, watch or listen to next, across every platform.">
+<meta name="author" content="SaurabhS-pm">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap">
+<style>
+:root{
+  --bg:#f3f2f2; --surface:#eae9e9; --ink:#201e1d; --ink-2:#444141; --ink-3:#605d5d;
+  --accent:#ec3013; --accent-600:#dd2b0f; --accent-700:#ae1800; --accent-800:#7c1405;
+  --accent-200:#ffe0d9; --accent-300:#ffc4b8;
+  --rule:#201e1d; --divider:rgba(32,30,29,.4);
+  --font:"Archivo",system-ui,sans-serif;
+  --wrap:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent-300)}
+a{color:var(--accent-700);text-decoration:none}
+a:hover{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3{font-weight:900;letter-spacing:-.03em;margin:0}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700}
+
+/* header */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px 0;border-bottom:2px solid var(--rule)}
+.brand{display:flex;align-items:baseline;gap:12px}
+.brand b{font-weight:900;font-size:17px;letter-spacing:-.02em}
+.brand span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.nav-links{display:flex;gap:24px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.nav-links a{color:var(--ink)}
+.nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--accent)}
+
+/* hero */
+.hero{display:flex;flex-direction:column;gap:24px;padding:72px 0 56px;border-bottom:2px solid var(--rule)}
+.hero h1{font-size:clamp(34px,5.6vw,64px);line-height:1;letter-spacing:-.035em;max-width:20ch}
+.hero p{max-width:60ch;font-size:clamp(17px,2vw,21px);line-height:1.5;color:var(--ink-2);text-wrap:pretty}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:6px 10px;background:var(--accent-200);color:var(--accent-800)}
+
+/* body */
+.section{padding:64px 0;border-bottom:2px solid var(--rule)}
+.section h2{margin-top:12px;font-size:clamp(26px,3.6vw,42px);line-height:1.05}
+.prose{max-width:68ch;display:flex;flex-direction:column;gap:20px;margin-top:28px}
+.prose p{font-size:17px;line-height:1.6;color:var(--ink-2);text-wrap:pretty}
+.prose strong{color:var(--ink);font-weight:800}
+
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;background:var(--surface);padding:2px 6px}
+
+/* figures */
+figure{margin:32px 0 0}
+figure img{display:block;width:100%;height:auto;border:2px solid var(--rule);background:var(--surface)}
+figcaption{margin-top:10px;font-size:13px;line-height:1.45;color:var(--ink-3);max-width:52ch}
+.side{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:36px;align-items:start;margin-top:28px}
+.side .prose{margin-top:0}
+.side figure{margin-top:0}
+
+.back{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:40px 0}
+.link-underline{font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid var(--accent);padding-bottom:3px;color:var(--ink)}
+.link-underline:hover{color:var(--accent)}
+
+footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
+
+@media (max-width:860px){
+  .side{grid-template-columns:1fr;gap:24px}
+}
+
+/* stats strip */
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--rule);border-bottom:2px solid var(--rule);margin-top:32px}
+.hero + .stats{border-top:0;margin-top:0}
+.stat{padding:28px;border-right:2px solid var(--rule)}
+.stat:first-child{padding-left:0}
+.stat:last-child{border-right:0;padding-right:0}
+.stat b{display:block;font-weight:900;font-size:clamp(30px,3.6vw,40px);letter-spacing:-.03em;line-height:1}
+.stat span{display:block;margin-top:10px;font-size:15px;line-height:1.45;color:var(--ink-2);max-width:26ch}
+
+/* pull quote */
+.prose p.pull{border-left:2px solid var(--accent);padding:2px 0 2px 20px;color:var(--ink);font-weight:600}
+.prose p.note{font-size:13px;line-height:1.45;color:var(--ink-3)}
+
+@media (max-width:640px){
+  .stats{grid-template-columns:1fr}
+  .stat,.stat:first-child,.stat:last-child{padding:20px 0;border-right:0;border-bottom:2px solid var(--divider)}
+  .stat:last-child{border-bottom:0}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="nav">
+    <div class="brand"><b>Saurabh S.</b><span>Product</span></div>
+    <nav class="nav-links">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#cases">Case studies</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="kicker">Case study</div>
+    <h1>NexRead: ranking what to read next by intent, using an LLM</h1>
+    <p>Say where you are and what you are after. Get back a short, ranked set of specific things to read, watch or listen to next, drawn from across every platform, with a reason attached to each.</p>
+    <div class="tags"><span class="tag">AI Recommendations</span><span class="tag">LLM ranking</span><span class="tag">0 to 1</span><span class="tag">Live</span></div>
+  </section>
+
+  <section class="section">
+    <div class="kicker">01</div>
+    <h2>Problem</h2>
+    <div class="prose">
+      <p>Learning anything as an adult means assembling your own curriculum. The material is out there, scattered across platforms that each recommend only their own inventory, and each optimising for your next session rather than your next step.</p>
+      <p>So you assemble it yourself, badly. You search, which requires the vocabulary before you can query it, and returns pages about a topic rather than an answer to a situation. You follow people, which gets you everything they publish rather than the one thing that helps. You let a feed guess, and it guesses from what you clicked, because there is no field anywhere to state a goal out loud.</p>
+      <p>Career learning is where that costs the most, because the goals are sharp and the deadlines are real. Three weeks from a product interview and freezing on metrics questions is a precise problem with a precise answer somewhere, and nothing indexes by the one thing you actually have, which is an intent.</p>
+      <p>That is the gap: unified access by intent. One place to describe your situation in your own words and get a small, ordered answer rather than an endless surface to browse.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="kicker">02</div>
+    <h2>Approach</h2>
+    <div class="prose">
+      <p>The input is a sentence you finish in three taps. Where you are, what you are after, and the specific thing. "I am job searching now and I am stuck on not getting screens." Six situations, each offering the intents that make sense for it, and a final blank that is either a short list or a search over the topics the library genuinely covers.</p>
+      <p>Behind it sit two halves that never run in the same place. Overnight, a pipeline reads a curated set of public sources, works out what each new piece is about, who it is pitched at and whether it has substance, and packs the result into one compact bundle. The live site loads that bundle into memory and spends one model call per visit turning the best candidates into two or three named areas, each with a match score and a one-line reason that has to point at something in the piece itself.</p>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>Over 100</b><span>curated sources</span></div>
+      <div class="stat"><b>1,900+</b><span>pieces ranked</span></div>
+      <div class="stat"><b>~3s</b><span>per brief, under a penny</span></div>
+    </div>
+
+    <div class="side">
+      <figure>
+        <img src="../assets/case-studies/nexread-builder.png" alt="The sentence builder partway through. The sentence reads &quot;I am job searching now and I want to what I am after&quot;, with the first answer filled in and the second blank highlighted. Below it, four choices: fix a specific problem, target a role, keep up with a field, figure out what's next. A counter reads 1 of 3 answered." width="3280" height="3312" loading="lazy" decoding="async">
+        <figcaption>The whole input. Three taps, no account, and nothing collected about the reader: no sign-in, no profile pull, no browsing history.</figcaption>
+      </figure>
+      <div class="prose">
+        <p>The library is a curated sample, not an index of the field. It covers product, engineering, recruiting, design, data, finance, sales, marketing, operations, people leadership, and more recently medicine, law and research, and it says "not covered yet" rather than guessing when a question falls outside that.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="kicker">03</div>
+    <h2>Key decisions</h2>
+    <div class="prose">
+      <p><strong>Recommend pieces, not people.</strong> Following someone is a proxy for what you actually want. Even an excellent creator posts filler most weeks, so a list of names leaves you exactly where you started. Ranking individual items is harder, and it is the entire value. Creators surface because their work was picked, which is a more earned follow than a quiz result.</p>
+      <p><strong>Every format in one ranking.</strong> The gap is cross-platform by definition, so articles, newsletters, video, podcasts and books are ranked together and only split apart for display. No platform will ever do this, because each one is a retention tool for its own inventory.</p>
+      <p><strong>A score you can interrogate.</strong> Each piece carries a match score out of ten and a substance score, and the reason under it has to name something specific in the piece. A percentage nobody can question is decoration, and it was the first thing I wanted to avoid building.</p>
+      <p><strong>A thin answer says so.</strong> Where the library has one good piece for an area, the brief shows one and says more is coming. Padding to a fixed count is what you do when you cannot admit a gap, and it is the fastest way to make every other score on the page untrustworthy.</p>
+    </div>
+
+    <div class="side">
+      <div class="prose">
+        <p><strong>Tell people what to skip.</strong> An optional reads section names things that are widely shared and wrong for this particular person, with the mismatch stated. No engagement-optimised feed will ever do that, which is exactly why it is worth having.</p>
+        <p><strong>Collect nothing, and stay inside the rules.</strong> No account, no sign-in, no history, no IP address stored. Profiles on networks that forbid automated access are never fetched, and a site telling us not to read something is respected rather than worked around. One feature was rebuilt against a different provider mid-build for precisely that reason.</p>
+      </div>
+      <figure>
+        <img src="../assets/case-studies/nexread-result.png" alt="A finished read titled &quot;Keeping up with clinical developments in medicine&quot;, built from the answers job searching now, keep up with a field, and Medicine. Two ranked newsletter pieces sit under the area heading Clinical practice updates, numbered 01 and 02. Each shows its publication, reading time, a match score and a substance score out of ten, and a one-line reason naming what the piece covers." width="3280" height="3260" loading="lazy" decoding="async">
+        <figcaption>One brief: ranked pieces with a reason each, the area they belong to, books as background reading, and people who coach that area.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="kicker">04</div>
+    <h2>What I found</h2>
+    <div class="prose">
+      <p><strong>The library only understood one profession's career ladder.</strong> Every piece is labelled by who it is pitched at: someone starting out, someone established, or someone running things. When I widened the library into medicine, law and research, almost nothing came back labelled as entry level. A hand check found nine in ten wrongly labelled, all failing the same way: the rule had been written in the vocabulary of one industry, so medical school and law school did not register as the start of a career at all. The fix was to state the principle rather than the examples. Entering any profession counts as a first role, whatever the route in is called.</p>
+      <p><strong>Two of the three personalisation controls did nothing.</strong> Adding your years of experience reordered a shortlist that had already been chosen without knowing your level. It looked personalised and changed almost nothing until it was rewired to search again at the right level. A second control was used once in 167 sessions and was deleted rather than fixed.</p>
+      <p><strong>Variety was cheaper to fake than to buy.</strong> Keeping repeat visits fresh by generating several different answers per question would have cost real money every month. Measured, the answers overlapped more than four fifths of the time and often differed only in the wording of a heading. What shipped instead rotates which piece leads and reshuffles the close calls, at a fraction of the cost.</p>
+      <p><strong>Speed was somebody else's problem.</strong> Briefs were taking fifteen to twenty-five seconds and my first two theories were both wrong. Measurement showed the delay was not in our code at all but in which route the request happened to take, splitting cleanly into fast and very slow with almost nothing in between. Pinning the route, and dropping a check that had been rejecting one answer in five and making it start over, cut the typical wait by three quarters and removed the slow group entirely.</p>
+      <p class="pull">The pattern across all four: every instinct I had about what was wrong was wrong, and measuring took an hour each time.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="kicker">05</div>
+    <h2>What I would do differently</h2>
+    <div class="prose">
+      <p><strong>Fix coverage before ranking.</strong> The first working version had roughly twenty sources and could not answer a search for a role outside the handful they covered. The ranking was fine; the library could not answer the question. A recommender at this scale is mostly a curation problem wearing an algorithm costume, and I spent the first week on the costume.</p>
+      <p><strong>Write each rule once, where it is enforced.</strong> One check demanded the exact wording another instruction forbade, so two fifths of failures were self-inflicted, and the tests had frozen the old rule and were defending the wrong behaviour. Rules now live in one place and the code reads them from there.</p>
+      <p><strong>Verify from the outside.</strong> Three faults reached the live site having passed every test, because the files they needed existed on my laptop and nowhere else. One of them would have quietly served stale answers forever. The check that caught them was running the real thing with my local data moved out of the way, and it should have been the first thing I built.</p>
+      <p><strong>Treat constraints as a position.</strong> Never fetching profiles, collecting nothing about the reader, refusing to work around a site's own rules: each closed a door, and together they are most of what makes the product defensible to describe.</p>
+      <p class="note">Built with agentic coding from a written spec and a rules file. The product decisions, the source curation and the judgment calls are mine.</p>
+    </div>
+  </section>
+
+  <div class="back">
+    <a class="link-underline" href="../index.html#cases">All case studies</a>
+    <a class="link-underline" href="../index.html#contact">Get in touch</a>
+  </div>
+</div>
+
+<footer class="wrap">Built without frameworks. Hand-written HTML and CSS.</footer>
+
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Competitive Intelligence RAG — Case study — Saurabh S.</title>
+<meta name="description" content="Asking plain-English questions of a competitor's app reviews: 500 reviews across two stores, local embeddings, and an ambiguous review counted as ambiguous rather than positive.">
+<meta name="author" content="SaurabhS-pm">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&display=swap">
+<style>
+:root{
+  --bg:#f3f2f2; --surface:#eae9e9; --ink:#201e1d; --ink-2:#444141; --ink-3:#605d5d;
+  --accent:#ec3013; --accent-600:#dd2b0f; --accent-700:#ae1800; --accent-800:#7c1405;
+  --accent-200:#ffe0d9; --accent-300:#ffc4b8;
+  --rule:#201e1d; --divider:rgba(32,30,29,.4);
+  --font:"Archivo",system-ui,sans-serif;
+  --wrap:1180px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font);-webkit-font-smoothing:antialiased}
+::selection{background:var(--accent-300)}
+a{color:var(--accent-700);text-decoration:none}
+a:hover{color:var(--accent)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+h1,h2,h3{font-weight:900;letter-spacing:-.03em;margin:0}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 24px}
+.kicker{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);font-weight:700}
+
+/* header */
+.nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px 0;border-bottom:2px solid var(--rule)}
+.brand{display:flex;align-items:baseline;gap:12px}
+.brand b{font-weight:900;font-size:17px;letter-spacing:-.02em}
+.brand span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.nav-links{display:flex;gap:24px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
+.nav-links a{color:var(--ink)}
+.nav-links a:hover,.nav-links a[aria-current="page"]{color:var(--accent)}
+
+/* hero */
+.hero{display:flex;flex-direction:column;gap:24px;padding:72px 0 56px;border-bottom:2px solid var(--rule)}
+.hero h1{font-size:clamp(34px,5.6vw,64px);line-height:1;letter-spacing:-.035em;max-width:20ch}
+.hero p{max-width:60ch;font-size:clamp(17px,2vw,21px);line-height:1.5;color:var(--ink-2);text-wrap:pretty}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:6px 10px;background:var(--accent-200);color:var(--accent-800)}
+
+/* body */
+.section{padding:64px 0;border-bottom:2px solid var(--rule)}
+.section h2{margin-top:12px;font-size:clamp(26px,3.6vw,42px);line-height:1.05}
+.prose{max-width:68ch;display:flex;flex-direction:column;gap:20px;margin-top:28px}
+.prose p{font-size:17px;line-height:1.6;color:var(--ink-2);text-wrap:pretty}
+.prose strong{color:var(--ink);font-weight:800}
+
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;background:var(--surface);padding:2px 6px}
+
+/* figures */
+figure{margin:32px 0 0}
+figure img{display:block;width:100%;height:auto;border:2px solid var(--rule);background:var(--surface)}
+figcaption{margin-top:10px;font-size:13px;line-height:1.45;color:var(--ink-3);max-width:52ch}
+.side{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:36px;align-items:start;margin-top:28px}
+.side .prose{margin-top:0}
+.side figure{margin-top:0}
+
+.back{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:40px 0}
+.link-underline{font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid var(--accent);padding-bottom:3px;color:var(--ink)}
+.link-underline:hover{color:var(--accent)}
+
+footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
+
+@media (max-width:860px){
+  .side{grid-template-columns:1fr;gap:24px}
+}
+
+/* stats strip */
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--rule);border-bottom:2px solid var(--rule);margin-top:32px}
+.hero + .stats{border-top:0;margin-top:0}
+.stat{padding:28px;border-right:2px solid var(--rule)}
+.stat:first-child{padding-left:0}
+.stat:last-child{border-right:0;padding-right:0}
+.stat b{display:block;font-weight:900;font-size:clamp(30px,3.6vw,40px);letter-spacing:-.03em;line-height:1}
+.stat span{display:block;margin-top:10px;font-size:15px;line-height:1.45;color:var(--ink-2);max-width:26ch}
+
+/* pull quote */
+.prose p.pull{border-left:2px solid var(--accent);padding:2px 0 2px 20px;color:var(--ink);font-weight:600}
+
+@media (max-width:640px){
+  .stats{grid-template-columns:1fr}
+  .stat,.stat:first-child,.stat:last-child{padding:20px 0;border-right:0;border-bottom:2px solid var(--divider)}
+  .stat:last-child{border-bottom:0}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="nav">
+    <div class="brand"><b>Saurabh S.</b><span>Product</span></div>
+    <nav class="nav-links">
+      <a href="../index.html#work">Work</a>
+      <a href="../index.html#cases">Case studies</a>
+      <a href="../index.html#projects">Projects</a>
+      <a href="../index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="kicker">Case study</div>
+    <h1>Competitive Intelligence RAG: answering product questions from a competitor's reviews</h1>
+    <p>Five hundred reviews per app across two stores, answered in plain English, with one rule: an ambiguous review is not counted as a positive one.</p>
+    <div class="tags">
+      <span class="tag">RAG</span>
+      <span class="tag">AI/ML</span>
+      <span class="tag">0 to 1</span>
+    </div>
+  </section>
+
+  <section class="stats">
+    <div class="stat"><b>500 reviews</b><span>Per app, pulled live from the App Store and Google Play</span></div>
+    <div class="stat"><b>Free to run</b><span>Local embeddings and vector store, no paid API anywhere in the pipeline</span></div>
+    <div class="stat"><b>5 to 10%</b><span>Of reviews genuinely ambiguous, and reported as such</span></div>
+  </section>
+
+  <section class="section">
+    <div class="kicker">01</div>
+    <h2>Problem</h2>
+    <div class="prose">
+      <p>Product managers monitor competitors by reading reviews, and reading reviews does not scale. A PM trying to work out what users hate about a rival's money-transfer flow wades through hundreds of entries: most irrelevant, many vague, none structured. That happens every sprint, every time a competitor ships, and every time a stakeholder asks what users are saying about X.</p>
+      <p>The existing answers are a store's own rating summary, which gives a number and no reason, or a social listening tool priced for a marketing team rather than a PM with a question on a Tuesday afternoon.</p>
+      <p>What was missing was the ability to ask a question in plain English and get an answer grounded in the actual reviews, with the sentiment split stated rather than implied.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="kicker">02</div>
+    <h2>Approach</h2>
+    <div class="prose">
+      <p>Type an app name, optionally a feature area, then ask a question. The tool pulls live reviews from both stores, embeds them on the machine, retrieves the relevant ones, and answers from those with a sentiment breakdown and the supporting reviews shown underneath.</p>
+      <p>Up to 500 reviews per app, deduplicated by text before anything else happens. Reviews are chunked at sentence boundaries into roughly 200-character segments and embedded locally, so nothing goes to a paid embedding service. Retrieval is similarity search over a local vector store, scoped to the feature area first when one is given. The answer is assembled by an LLM through a model-agnostic gateway, with retry and backoff for rate limits.</p>
+      <p>Free to clone and run, which was a constraint rather than an afterthought. The intended user is another PM who wants an answer this afternoon, not a procurement conversation.</p>
+    </div>
+    <figure>
+      <img src="../assets/case-studies/ci-rag-app.png" alt="The app answering a question about Revolut's bank account feature. A written answer sits above a sentiment breakdown reading positive 20 percent, negative 60 percent, neutral 0 percent and uncertain 20 percent, with the sample reviews the answer was drawn from listed below." width="1416" height="757" loading="lazy" decoding="async">
+      <figcaption>One query against Revolut's reviews, scoped to the bank account area: a grounded answer, the sentiment split with its Uncertain bucket, and the reviews the answer was built from.</figcaption>
+    </figure>
+  </section>
+
+  <section class="section">
+    <div class="kicker">03</div>
+    <h2>Key decisions</h2>
+    <div class="prose">
+      <p><strong>A confidence threshold on sentiment.</strong> The first version counted "it's okay I guess" as positive, which flattered the breakdown. A threshold routes weak signals into an Uncertain bucket instead, and it is adjustable in the sidebar rather than hidden, because how strict to be is the user's call and not mine.</p>
+      <p><strong>Star ratings first, text analysis second.</strong> Where a review carries a rating, the rating is the signal. Text-only reviews fall back to a lexicon-based analyser. Two sources of truth with a stated precedence beats one model guessing at everything.</p>
+      <p><strong>A model gateway rather than a direct API.</strong> Swapping models is a one-line change with no SDK refactor, so the tool runs on a free tier today and can move to a stronger model without touching anything else. It also keeps it free for anyone else to clone.</p>
+      <p><strong>A local vector store, knowingly temporary.</strong> It runs with zero signup, which is the whole point of a tool meant to be cloned and used immediately. It is also not production-ready: no managed hosting, no access controls, unreliable under concurrent load. The right call for a prototype and the first thing to replace for a team.</p>
+      <p><strong>Local embeddings over a paid API.</strong> The pipeline runs offline at 384 dimensions with no external dependency and no per-call cost. The original library had no prebuilt build for the Python version in use, and switching to direct inference removed the dependency rather than working around it.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="kicker">04</div>
+    <h2>What I found</h2>
+    <div class="prose">
+      <p><strong>A clean-looking answer was the wrong answer.</strong> The first sentiment breakdown was convincing and inaccurate. Adding the confidence threshold showed that roughly five to ten percent of reviews are genuinely ambiguous. Surfacing that honestly is more useful to a PM than a breakdown implying precision the data cannot support.</p>
+      <p><strong>The worst bug was silent.</strong> The review feed found apps correctly and returned zero reviews, with no error and no explanation. Nothing failed; there was simply nothing there. Terminal logging is what surfaced it, and the fix was to call the platform's own API directly, which turned out to be more reliable anyway.</p>
+      <p><strong>Environment setup cost more than the product logic.</strong> Getting compatible library builds for the Python version in use took longer than writing the retrieval pipeline. That reads as an engineering detail and is not one: it decides how fast a teammate can clone the thing and run it, which makes it a product problem.</p>
+      <p class="pull">Silent failures are the expensive kind. Nothing errored, nothing logged, and the answer was simply built from nothing.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="kicker">05</div>
+    <h2>What I would do differently</h2>
+    <div class="prose">
+      <p><strong>Pin the environment on day one.</strong> Lock the Python version and pin every dependency from the first commit. Most of the time lost went to a problem a virtual environment and a lockfile would have prevented.</p>
+      <p><strong>Add time filtering before anything else.</strong> A PM rarely wants all reviews. They want the last thirty days, because the question is usually about reaction to a specific release. That one filter would have made the tool more useful than any model upgrade.</p>
+      <p><strong>Migrate the store before data accumulates.</strong> Moving off the local vector database gets harder the longer it holds data. It was the right prototype choice and the wrong thing to defer.</p>
+      <p><strong>Treat the review source as the weak link.</strong> The feed is unreliable for some regions and apps, and every downstream answer inherits that. A more robust source is worth more than a better prompt.</p>
+    </div>
+  </section>
+
+  <div class="back">
+    <a class="link-underline" href="../index.html#cases">All case studies</a>
+    <a class="link-underline" href="https://github.com/SaurabhS-pm/competitive-intel-rag">View on GitHub</a>
+    <a class="link-underline" href="../index.html#contact">Get in touch</a>
+  </div>
+</div>
+
+<footer class="wrap">Built without frameworks. Hand-written HTML and CSS.</footer>
+
+</body>
+</html>
