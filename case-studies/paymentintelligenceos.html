@@ -41,7 +41,7 @@ p{margin:0}
 
 /* hero */
 .hero{display:flex;flex-direction:column;gap:24px;padding:72px 0 56px;border-bottom:2px solid var(--rule)}
-.hero h1{font-size:clamp(34px,5.6vw,64px);line-height:1;letter-spacing:-.035em;max-width:20ch}
+.hero h1{font-size:clamp(26px,5.6vw,64px);line-height:1;letter-spacing:-.035em;max-width:20ch}
 .hero p{max-width:60ch;font-size:clamp(17px,2vw,21px);line-height:1.5;color:var(--ink-2);text-wrap:pretty}
 .tags{display:flex;flex-wrap:wrap;gap:8px}
 .tag{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:6px 10px;background:var(--accent-200);color:var(--accent-800)}
@@ -71,6 +71,9 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 
 @media (max-width:860px){
   .side{grid-template-columns:1fr;gap:24px}
+}
+@media (max-width:640px){
+  .section{padding:44px 0}
 }
 </style>
 </head>
@@ -109,7 +112,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
       <p>Fifty merchants across the US, Canada, the UK, Japan and India. Forty-eight crawled cleanly. 170 signatures covering 61 vendors across platform, PSP, wallet, BNPL and checkout vendor. Fifty merchants is a sample, not a census. The regional finding below is a hypothesis worth testing at scale, not a market statistic.</p>
     </div>
     <figure>
-      <img src="../assets/case-studies/pio-explorer.png" alt="The PaymentIntelligenceOS merchant explorer: filter facets counting country, platform, PSP, wallet, BNPL and checkout vendor, above a table of crawled merchants where inferred detections carry an INFERRED label.">
+      <a href="../assets/case-studies/pio-explorer.png"><img src="../assets/case-studies/pio-explorer.png" alt="The PaymentIntelligenceOS merchant explorer: filter facets counting country, platform, PSP, wallet, BNPL and checkout vendor, above a table of crawled merchants where inferred detections carry an INFERRED label."></a>
       <figcaption>The explorer: every facet counted across the sample, and each detection carrying its state — sighted, possible or inferred — in the row itself rather than in a footnote.</figcaption>
     </figure>
   </section>
@@ -123,7 +126,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
         <p><strong>Three states, not one.</strong> Sighted, possible and inferred are recorded separately and shown separately. This matters most for PSP: on a Shopify store the processor cannot be sighted at all, because Shopify Payments is server-side and emits no client-side script. PSP coverage is 10 percent sighted and 75 percent once the platform-native inference is applied. Reporting only the higher number would have been the flattering choice and the wrong one.</p>
       </div>
       <figure>
-        <img src="../assets/case-studies/pio-merchant-herschel.png" alt="Merchant detail for herschel.com, showing Stripe sighted as the PSP with an evidence row citing psp.stripe.js on the payment_info page.">
+        <a href="../assets/case-studies/pio-merchant-herschel.png"><img src="../assets/case-studies/pio-merchant-herschel.png" alt="Merchant detail for herschel.com, showing Stripe sighted as the PSP with an evidence row citing psp.stripe.js on the payment_info page."></a>
         <figcaption>herschel.com, the 10 percent case: the PSP is sighted, not assumed — <code>psp.stripe.js</code> firing on the payment-info page, with the matched snippet stored next to it.</figcaption>
       </figure>
     </div>
@@ -145,7 +148,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
         <p>The finding worth the whole exercise is regional. Half the Indian merchants sampled, five of ten, run a third-party checkout vendor between the store and the PSP: GoKwik on all five, with Shopflo showing as a weaker signal on one of them. That layer appears on no merchant in the other four countries. It changes who the commercial conversation is with, because the checkout vendor owns the payment method mix that the PSP used to own.</p>
       </div>
       <figure>
-        <img src="../assets/case-studies/pio-merchant-gokwik.png" alt="Merchant detail for beminimalist.co in India, showing GoKwik sighted as the checkout vendor, Shopflo marked possible, and the PSP only inferred from the platform.">
+        <a href="../assets/case-studies/pio-merchant-gokwik.png"><img src="../assets/case-studies/pio-merchant-gokwik.png" alt="Merchant detail for beminimalist.co in India, showing GoKwik sighted as the checkout vendor, Shopflo marked possible, and the PSP only inferred from the platform."></a>
         <figcaption>beminimalist.co: GoKwik sighted as the checkout vendor, Shopflo the weaker signal beneath it, and the PSP inferred only because no external PSP script fired on any page checked.</figcaption>
       </figure>
     </div>

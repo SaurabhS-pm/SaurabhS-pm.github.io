@@ -41,7 +41,7 @@ p{margin:0}
 
 /* hero */
 .hero{display:flex;flex-direction:column;gap:24px;padding:72px 0 56px;border-bottom:2px solid var(--rule)}
-.hero h1{font-size:clamp(34px,5.6vw,64px);line-height:1;letter-spacing:-.035em;max-width:20ch}
+.hero h1{font-size:clamp(26px,5.6vw,64px);line-height:1;letter-spacing:-.035em;max-width:20ch}
 .hero p{max-width:60ch;font-size:clamp(17px,2vw,21px);line-height:1.5;color:var(--ink-2);text-wrap:pretty}
 .tags{display:flex;flex-wrap:wrap;gap:8px}
 .tag{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:6px 10px;background:var(--accent-200);color:var(--accent-800)}
@@ -72,6 +72,9 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 @media (max-width:860px){
   .side{grid-template-columns:1fr;gap:24px}
 }
+@media (max-width:640px){
+  .section{padding:44px 0}
+}
 
 /* stats strip */
 .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:2px solid var(--rule);border-bottom:2px solid var(--rule);margin-top:32px}
@@ -84,7 +87,8 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 
 /* pull quote */
 .prose p.pull{border-left:2px solid var(--accent);padding:2px 0 2px 20px;color:var(--ink);font-weight:600}
-.prose p.note{font-size:13px;line-height:1.45;color:var(--ink-3)}
+.prose p.note{font-size:13px;line-height:1.45;color:var(--ink-3);border-top:2px solid var(--divider);padding-top:14px;margin-top:12px}
+.side figure.phone-fig{max-width:340px}
 
 @media (max-width:640px){
   .stats{grid-template-columns:1fr}
@@ -112,6 +116,12 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
     <div class="tags"><span class="tag">AI Recommendations</span><span class="tag">LLM ranking</span><span class="tag">0 to 1</span><span class="tag">Live</span></div>
   </section>
 
+  <section class="stats">
+    <div class="stat"><b>Over 100</b><span>curated sources</span></div>
+    <div class="stat"><b>1,900+</b><span>pieces ranked</span></div>
+    <div class="stat"><b>~3s</b><span>per brief, under a penny</span></div>
+  </section>
+
   <section class="section">
     <div class="kicker">01</div>
     <h2>Problem</h2>
@@ -126,24 +136,16 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
   <section class="section">
     <div class="kicker">02</div>
     <h2>Approach</h2>
-    <div class="prose">
-      <p>The input is a sentence you finish in three taps. Where you are, what you are after, and the specific thing. "I am job searching now and I am stuck on not getting screens." Six situations, each offering the intents that make sense for it, and a final blank that is either a short list or a search over the topics the library genuinely covers.</p>
-      <p>Behind it sit two halves that never run in the same place. Overnight, a pipeline reads a curated set of public sources, works out what each new piece is about, who it is pitched at and whether it has substance, and packs the result into one compact bundle. The live site loads that bundle into memory and spends one model call per visit turning the best candidates into two or three named areas, each with a match score and a one-line reason that has to point at something in the piece itself.</p>
-    </div>
-    <div class="stats">
-      <div class="stat"><b>Over 100</b><span>curated sources</span></div>
-      <div class="stat"><b>1,900+</b><span>pieces ranked</span></div>
-      <div class="stat"><b>~3s</b><span>per brief, under a penny</span></div>
-    </div>
-
     <div class="side">
-      <figure>
-        <img src="../assets/case-studies/nexread-builder.png" alt="The sentence builder partway through. The sentence reads &quot;I am job searching now and I want to what I am after&quot;, with the first answer filled in and the second blank highlighted. Below it, four choices: fix a specific problem, target a role, keep up with a field, figure out what's next. A counter reads 1 of 3 answered." width="3280" height="3312" loading="lazy" decoding="async">
-        <figcaption>The whole input. Three taps, no account, and nothing collected about the reader: no sign-in, no profile pull, no browsing history.</figcaption>
-      </figure>
       <div class="prose">
+        <p>The input is a sentence you finish in three taps. Where you are, what you are after, and the specific thing. "I am job searching now and I am stuck on not getting screens." Six situations, each offering the intents that make sense for it, and a final blank that is either a short list or a search over the topics the library genuinely covers.</p>
+        <p>Behind it sit two halves that never run in the same place. Overnight, a pipeline reads a curated set of public sources, works out what each new piece is about, who it is pitched at and whether it has substance, and packs the result into one compact bundle. The live site loads that bundle into memory and spends one model call per visit turning the best candidates into two or three named areas, each with a match score and a one-line reason that has to point at something in the piece itself.</p>
         <p>The library is a curated sample, not an index of the field. It covers product, engineering, recruiting, design, data, finance, sales, marketing, operations, people leadership, and more recently medicine, law and research, and it says "not covered yet" rather than guessing when a question falls outside that.</p>
       </div>
+      <figure class="phone-fig">
+        <a href="../assets/case-studies/nexread-phone-builder.png"><img src="../assets/case-studies/nexread-phone-builder.png" alt="The sentence builder partway through. The sentence reads &quot;I am job searching now and I want to what I am after&quot;, with the first answer filled in and the second blank highlighted. Below it, four choices: fix a specific problem, target a role, keep up with a field, figure out what's next. A counter reads 1 of 3 answered." width="2066" height="3312" loading="lazy" decoding="async"></a>
+        <figcaption>The whole input. Three taps, no account, and nothing collected about the reader: no sign-in, no profile pull, no browsing history.</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -162,8 +164,8 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
         <p><strong>Tell people what to skip.</strong> An optional reads section names things that are widely shared and wrong for this particular person, with the mismatch stated. No engagement-optimised feed will ever do that, which is exactly why it is worth having.</p>
         <p><strong>Collect nothing, and stay inside the rules.</strong> No account, no sign-in, no history, no IP address stored. Profiles on networks that forbid automated access are never fetched, and a site telling us not to read something is respected rather than worked around. One feature was rebuilt against a different provider mid-build for precisely that reason.</p>
       </div>
-      <figure>
-        <img src="../assets/case-studies/nexread-result.png" alt="A finished read titled &quot;Keeping up with clinical developments in medicine&quot;, built from the answers job searching now, keep up with a field, and Medicine. Two ranked newsletter pieces sit under the area heading Clinical practice updates, numbered 01 and 02. Each shows its publication, reading time, a match score and a substance score out of ten, and a one-line reason naming what the piece covers." width="3280" height="3260" loading="lazy" decoding="async">
+      <figure class="phone-fig">
+        <a href="../assets/case-studies/nexread-phone-result.png"><img src="../assets/case-studies/nexread-phone-result.png" alt="A finished read titled &quot;Keeping up with clinical developments in medicine&quot;, built from the answers job searching now, keep up with a field, and Medicine. Two ranked newsletter pieces sit under the area heading Clinical practice updates, numbered 01 and 02. Each shows its publication, reading time, a match score and a substance score out of ten, and a one-line reason naming what the piece covers." width="2066" height="3260" loading="lazy" decoding="async"></a>
         <figcaption>One brief: ranked pieces with a reason each, the area they belong to, books as background reading, and people who coach that area.</figcaption>
       </figure>
     </div>
