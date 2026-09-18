@@ -125,11 +125,14 @@ p{margin:0}
 .lightbox-close:hover{background:var(--accent);border-color:var(--accent)}
 .shot img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
 .work-body{grid-column:1;grid-row:1;display:flex;flex-direction:column;gap:12px}
-.work-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.work-head h3{font-size:clamp(20px,2.4vw,26px);letter-spacing:-.02em}
+.work-head{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;row-gap:10px;align-items:baseline}
+.work-head h3{font-size:clamp(20px,2.4vw,26px);line-height:1.2;letter-spacing:-.02em;text-wrap:pretty}
+.work-sub{font-size:.72em;font-weight:500;letter-spacing:-.01em;color:var(--ink-2)}
+.work-tags{grid-column:2;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .work-num{font-weight:900;font-size:12px;letter-spacing:.08em;color:var(--accent);flex:none}
 .pill{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:5px 9px;border:2px solid var(--ink)}
 .pill-accent{border-color:var(--accent);color:var(--accent-700)}
+.tag{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:7px 11px;background:var(--surface);color:var(--ink)}
 .work-body > p{font-size:15px;line-height:1.5;color:var(--ink-2);text-wrap:pretty}
 .tile-outcome{font-size:14px;line-height:1.45;color:var(--ink);border-top:2px solid var(--divider);padding-top:10px;text-wrap:pretty}
 .tile-outcome b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-700);font-weight:800;margin-bottom:5px}
@@ -243,11 +246,14 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
         <div class="work-body">
           <div class="work-head">
             <span class="work-num">01</span>
-            <h3>NexRead</h3>
-            <span class="pill pill-accent">Live</span>
+            <h3>NexRead:<span class="work-sub"> ranking what to read next by intent, using an LLM</span></h3>
+            <div class="work-tags">
+              <span class="tag">AI Recommendations</span>
+              <span class="pill pill-accent">Live</span>
+            </div>
           </div>
           <p class="tile-outcome"><b>Problem</b>Learning anything as an adult means assembling your own curriculum across platforms that each recommend only their own inventory, and none of which can accept a goal you state out loud.</p>
-          <p class="tile-outcome"><b>Solution</b>Three taps in, a ranked set of specific things to read, watch or listen to next, drawn from a curated library of 1,900+ pieces across every platform. Built because the material exists and nothing indexes it by intent.</p>
+          <p class="tile-outcome"><b>Solution</b>Answers three tap questions about where you are and what you are after, then ranks a curated library of 1,900+ pieces across video, newsletters, podcasts and books into a short brief, with a match score and a reason on every pick.</p>
           <p class="tile-outcome"><b>Outcome</b>Live and serving in about three seconds for under a penny a read, collecting nothing about the reader.</p>
           <div class="chips">
             <span class="chip">LLM ranking</span>
@@ -271,8 +277,11 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
         <div class="work-body">
           <div class="work-head">
             <span class="work-num">02</span>
-            <h3>PaymentIntelligenceOS</h3>
-            <span class="pill">Completed</span>
+            <h3>PaymentIntelligenceOS:<span class="work-sub"> mapping merchant payment stacks from public pages</span></h3>
+            <div class="work-tags">
+              <span class="tag">Payments</span>
+              <span class="pill">Completed</span>
+            </div>
           </div>
           <p class="tile-outcome"><b>Problem</b>Payments teams guess at what a prospect already runs. Stack-detection tools flatten everything into one verdict, so you can't tell what was observed from what was assumed.</p>
           <p class="tile-outcome"><b>Solution</b>Crawls public merchant pages and maps the payment stack behind them — 50 merchants, five countries, 170 signatures across 61 vendors — reporting what was sighted separately from what was inferred.</p>
@@ -280,7 +289,6 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
           <div class="chips">
             <span class="chip">Python</span>
             <span class="chip">Crawler</span>
-            <span class="chip">Payments</span>
             <span class="chip">0 to 1</span>
           </div>
           <div class="tile-links">
@@ -297,8 +305,11 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
         <div class="work-body">
           <div class="work-head">
             <span class="work-num">03</span>
-            <h3>Competitive Intelligence RAG</h3>
-            <span class="pill">Completed</span>
+            <h3>Competitive Intelligence RAG:<span class="work-sub"> answering product questions from a competitor's reviews</span></h3>
+            <div class="work-tags">
+              <span class="tag">RAG</span>
+              <span class="pill">Completed</span>
+            </div>
           </div>
           <p class="tile-outcome"><b>Problem</b>PMs monitor competitors by reading reviews, which does not scale. A store's rating summary gives a number and no reason; a listening tool is priced for a marketing team, not a PM with a question on a Tuesday.</p>
           <p class="tile-outcome"><b>Solution</b>Pulls 500 reviews per app from both stores, embeds them locally, and answers a plain-English product question from the retrieved ones with a sentiment breakdown attached.</p>
@@ -309,7 +320,6 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
             <span class="chip">OpenRouter</span>
             <span class="chip">Streamlit</span>
             <span class="chip">ONNX</span>
-            <span class="chip">RAG</span>
           </div>
           <div class="tile-links">
             <a class="link-underline" href="case-studies/competitive-intel-rag.html">Read the case study</a>
@@ -326,14 +336,16 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
         <div class="work-body">
           <div class="work-head">
             <span class="work-num">04</span>
-            <h3>Cross-border payments</h3>
-            <span class="pill">Completed</span>
+            <h3>Cross-border payments:<span class="work-sub"> one payment experience across 50+ markets</span></h3>
+            <div class="work-tags">
+              <span class="tag">Payments</span>
+              <span class="pill">Completed</span>
+            </div>
           </div>
           <p class="tile-outcome"><b>Problem</b>A global marketplace needed a single payment experience across dozens of currencies, regulators and card networks.</p>
           <p class="tile-outcome"><b>Solution</b>Owned from strategy through GTM: rail selection, pricing, risk and compliance sequencing, and market-by-market rollout.</p>
           <p class="tile-outcome"><b>Outcome</b>Live in 50+ markets on a platform carrying multi-billion dollar GMV.</p>
           <div class="chips">
-            <span class="chip">Payments</span>
             <span class="chip">Cross-border</span>
             <span class="chip">Card networks</span>
             <span class="chip">GTM</span>
@@ -348,14 +360,16 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
         <div class="work-body">
           <div class="work-head">
             <span class="work-num">05</span>
-            <h3>Voice AI support agent</h3>
-            <span class="pill pill-accent">In progress</span>
+            <h3>Voice AI support agent:<span class="work-sub"> resolving routine payment support calls</span></h3>
+            <div class="work-tags">
+              <span class="tag">Voice AI</span>
+              <span class="pill pill-accent">In progress</span>
+            </div>
           </div>
           <p class="tile-outcome"><b>Problem</b>Declined cards, disputed charges and forgotten subscriptions still arrive by phone, where the hold time often costs more than the transaction.</p>
           <p class="tile-outcome"><b>What I'm building</b>A voice agent that resolves the routine cases and hands off with full context when it can't.</p>
           <p class="tile-outcome"><b>How it gets judged</b>Containment rate as the primary metric, with handoff quality as the guardrail: a bad escalation counts as a failure, not a resolution.</p>
           <div class="chips">
-            <span class="chip">Voice AI</span>
             <span class="chip">LLMs</span>
             <span class="chip">Python</span>
             <span class="chip">Agentic AI</span>
