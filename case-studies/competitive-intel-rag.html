@@ -32,7 +32,7 @@ p{margin:0}
 
 /* header */
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px 0;border-bottom:2px solid var(--rule)}
-.brand{display:flex;align-items:baseline;gap:12px}
+.brand{display:flex;align-items:baseline;gap:12px;color:var(--ink)}
 .brand b{font-weight:900;font-size:17px;letter-spacing:-.02em}
 .brand span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
 .nav-links{display:flex;gap:24px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
@@ -65,6 +65,10 @@ figcaption{margin-top:10px;font-size:13px;line-height:1.45;color:var(--ink-3);ma
 .hero.doc p{max-width:720px}
 .hero.doc .link-underline{align-self:flex-start}
 .doc .prose{max-width:720px}
+.prose-cols{display:block;column-count:2;column-gap:56px;max-width:none}
+.doc .prose-cols{max-width:none}
+.prose-cols > p{break-inside:avoid;margin:0 0 22px}
+.section > p.pull{margin-top:48px;padding-top:28px;border-top:2px solid var(--rule);max-width:none;font-size:clamp(22px,2.6vw,30px);line-height:1.22;font-weight:800;letter-spacing:-.02em;color:var(--ink);text-wrap:balance}
 .fig-measure{max-width:720px}
 .fig-pair{display:grid;grid-template-columns:repeat(2,minmax(0,460px));gap:56px;justify-content:center;margin-top:40px}
 .fig-pair figure{margin-top:0}
@@ -77,6 +81,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 
 @media (max-width:860px){
   .fig-pair{grid-template-columns:minmax(0,340px);justify-content:start;gap:32px}
+  .prose-cols{column-count:1}
 }
 @media (max-width:640px){
   .section{padding:44px 0}
@@ -91,9 +96,6 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 .stat b{display:block;font-weight:900;font-size:clamp(30px,3.6vw,40px);letter-spacing:-.03em;line-height:1}
 .stat span{display:block;margin-top:10px;font-size:15px;line-height:1.45;color:var(--ink-2);max-width:26ch}
 
-/* pull quote */
-.prose p.pull{border-left:2px solid var(--accent);padding:2px 0 2px 20px;color:var(--ink);font-weight:600}
-
 @media (max-width:640px){
   .stats{grid-template-columns:1fr}
   .stat,.stat:first-child,.stat:last-child{padding:20px 0;border-right:0;border-bottom:2px solid var(--divider)}
@@ -105,7 +107,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 
 <div class="wrap">
   <header class="nav">
-    <div class="brand"><b>Saurabh S.</b><span>Product</span></div>
+    <a class="brand" href="../index.html"><b>Saurabh S.</b><span>Product</span></a>
     <nav class="nav-links">
       <a href="../index.html#work">What I do</a>
       <a href="../index.html#cases">Selected work</a>
@@ -158,7 +160,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
   <section class="section doc">
     <div class="kicker">03</div>
     <h2>Key decisions</h2>
-    <div class="prose">
+    <div class="prose prose-cols">
       <p><strong>A confidence threshold on sentiment.</strong> The first version counted "it's okay I guess" as positive, which flattered the breakdown. A threshold routes weak signals into an Uncertain bucket instead, and it is adjustable in the sidebar rather than hidden, because how strict to be is the user's call and not mine.</p>
       <p><strong>Star ratings first, text analysis second.</strong> Where a review carries a rating, the rating is the signal. Text-only reviews fall back to a lexicon-based analyser. Two sources of truth with a stated precedence beats one model guessing at everything.</p>
       <p><strong>A model gateway rather than a direct API.</strong> Swapping models is a one-line change with no SDK refactor, so the tool runs on a free tier today and can move to a stronger model without touching anything else. It also keeps it free for anyone else to clone.</p>
@@ -174,14 +176,14 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
       <p><strong>A clean-looking answer was the wrong answer.</strong> The first sentiment breakdown was convincing and inaccurate. Adding the confidence threshold showed that roughly five to ten percent of reviews are genuinely ambiguous. Surfacing that honestly is more useful to a PM than a breakdown implying precision the data cannot support.</p>
       <p><strong>The worst bug was silent.</strong> The review feed found apps correctly and returned zero reviews, with no error and no explanation. Nothing failed; there was simply nothing there. Terminal logging is what surfaced it, and the fix was to call the platform's own API directly, which turned out to be more reliable anyway.</p>
       <p><strong>Environment setup cost more than the product logic.</strong> Getting compatible library builds for the Python version in use took longer than writing the retrieval pipeline. That reads as an engineering detail and is not one: it decides how fast a teammate can clone the thing and run it, which makes it a product problem.</p>
-      <p class="pull">Silent failures are the expensive kind. Nothing errored, nothing logged, and the answer was simply built from nothing.</p>
     </div>
+    <p class="pull">Silent failures are the expensive kind. Nothing errored, nothing logged, and the answer was simply built from nothing.</p>
   </section>
 
   <section class="section doc">
     <div class="kicker">05</div>
     <h2>What I would do differently</h2>
-    <div class="prose">
+    <div class="prose prose-cols">
       <p><strong>Pin the environment on day one.</strong> Lock the Python version and pin every dependency from the first commit. Most of the time lost went to a problem a virtual environment and a lockfile would have prevented.</p>
       <p><strong>Add time filtering before anything else.</strong> A PM rarely wants all reviews. They want the last thirty days, because the question is usually about reaction to a specific release. That one filter would have made the tool more useful than any model upgrade.</p>
       <p><strong>Migrate the store before data accumulates.</strong> Moving off the local vector database gets harder the longer it holds data. It was the right prototype choice and the wrong thing to defer.</p>

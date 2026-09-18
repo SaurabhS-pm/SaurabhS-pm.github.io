@@ -32,7 +32,7 @@ p{margin:0}
 
 /* header */
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px 0;border-bottom:2px solid var(--rule)}
-.brand{display:flex;align-items:baseline;gap:12px}
+.brand{display:flex;align-items:baseline;gap:12px;color:var(--ink)}
 .brand b{font-weight:900;font-size:17px;letter-spacing:-.02em}
 .brand span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
 .nav-links{display:flex;gap:24px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
@@ -65,6 +65,10 @@ figcaption{margin-top:10px;font-size:13px;line-height:1.45;color:var(--ink-3);ma
 .hero.doc p{max-width:720px}
 .hero.doc .link-underline{align-self:flex-start}
 .doc .prose{max-width:720px}
+.prose-cols{display:block;column-count:2;column-gap:56px;max-width:none}
+.doc .prose-cols{max-width:none}
+.prose-cols > p{break-inside:avoid;margin:0 0 22px}
+.section > p.pull{margin-top:48px;padding-top:28px;border-top:2px solid var(--rule);max-width:none;font-size:clamp(22px,2.6vw,30px);line-height:1.22;font-weight:800;letter-spacing:-.02em;color:var(--ink);text-wrap:balance}
 .fig-measure{max-width:720px}
 .fig-pair{display:grid;grid-template-columns:repeat(2,minmax(0,460px));gap:56px;justify-content:center;margin-top:40px}
 .fig-pair figure{margin-top:0}
@@ -77,6 +81,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 
 @media (max-width:860px){
   .fig-pair{grid-template-columns:minmax(0,340px);justify-content:start;gap:32px}
+  .prose-cols{column-count:1}
 }
 @media (max-width:640px){
   .section{padding:44px 0}
@@ -87,7 +92,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 
 <div class="wrap">
   <header class="nav">
-    <div class="brand"><b>Saurabh S.</b><span>Product</span></div>
+    <a class="brand" href="../index.html"><b>Saurabh S.</b><span>Product</span></a>
     <nav class="nav-links">
       <a href="../index.html#work">What I do</a>
       <a href="../index.html#cases">Selected work</a>
@@ -153,7 +158,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
   <section class="section doc">
     <div class="kicker">05</div>
     <h2>What I would do differently</h2>
-    <div class="prose">
+    <div class="prose prose-cols">
       <p><strong>Start from the question, not the crawler.</strong> The checkout-vendor layer was the most commercially interesting output and I found it incidentally. Sampling India deliberately on day one would have surfaced it in an afternoon.</p>
       <p><strong>Build the review queue first.</strong> The unknown-host list was noise for a week because reviewed hosts were never marked as reviewed. It found two real bugs within a minute of being cleaned.</p>
       <p><strong>Accept the ceiling earlier.</strong> No amount of crawler work sights a processor behind a server-side platform. That is a signal problem, not an engineering one, and the next version should spend its effort on non-Shopify merchants and on checkout pages that are actually permitted, rather than on a better browser.</p>

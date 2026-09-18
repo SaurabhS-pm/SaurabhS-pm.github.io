@@ -32,7 +32,7 @@ p{margin:0}
 
 /* header */
 .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:20px 0;border-bottom:2px solid var(--rule)}
-.brand{display:flex;align-items:baseline;gap:12px}
+.brand{display:flex;align-items:baseline;gap:12px;color:var(--ink)}
 .brand b{font-weight:900;font-size:17px;letter-spacing:-.02em}
 .brand span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
 .nav-links{display:flex;gap:24px;font-size:13px;letter-spacing:.08em;text-transform:uppercase;font-weight:600}
@@ -65,6 +65,10 @@ figcaption{margin-top:10px;font-size:13px;line-height:1.45;color:var(--ink-3);ma
 .hero.doc p{max-width:720px}
 .hero.doc .link-underline{align-self:flex-start}
 .doc .prose{max-width:720px}
+.prose-cols{display:block;column-count:2;column-gap:56px;max-width:none}
+.doc .prose-cols{max-width:none}
+.prose-cols > p{break-inside:avoid;margin:0 0 22px}
+.section > p.pull{margin-top:48px;padding-top:28px;border-top:2px solid var(--rule);max-width:none;font-size:clamp(22px,2.6vw,30px);line-height:1.22;font-weight:800;letter-spacing:-.02em;color:var(--ink);text-wrap:balance}
 .fig-measure{max-width:720px}
 .fig-pair{display:grid;grid-template-columns:repeat(2,minmax(0,460px));gap:56px;justify-content:center;margin-top:40px}
 .fig-pair figure{margin-top:0}
@@ -77,6 +81,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 
 @media (max-width:860px){
   .fig-pair{grid-template-columns:minmax(0,340px);justify-content:start;gap:32px}
+  .prose-cols{column-count:1}
 }
 @media (max-width:640px){
   .section{padding:44px 0}
@@ -91,9 +96,6 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 .stat b{display:block;font-weight:900;font-size:clamp(30px,3.6vw,40px);letter-spacing:-.03em;line-height:1}
 .stat span{display:block;margin-top:10px;font-size:15px;line-height:1.45;color:var(--ink-2);max-width:26ch}
 
-/* pull quote */
-.prose p.pull{border-left:2px solid var(--accent);padding:2px 0 2px 20px;color:var(--ink);font-weight:600}
-.prose p.note{font-size:13px;line-height:1.45;color:var(--ink-3);border-top:2px solid var(--divider);padding-top:14px;margin-top:12px}
 
 @media (max-width:640px){
   .stats{grid-template-columns:1fr}
@@ -106,7 +108,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 
 <div class="wrap">
   <header class="nav">
-    <div class="brand"><b>Saurabh S.</b><span>Product</span></div>
+    <a class="brand" href="../index.html"><b>Saurabh S.</b><span>Product</span></a>
     <nav class="nav-links">
       <a href="../index.html#work">What I do</a>
       <a href="../index.html#cases">Selected work</a>
@@ -161,7 +163,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
   <section class="section doc">
     <div class="kicker">03</div>
     <h2>Key decisions</h2>
-    <div class="prose">
+    <div class="prose prose-cols">
       <p><strong>Recommend pieces, not people.</strong> Following someone is a proxy for what you actually want. Even an excellent creator posts filler most weeks, so a list of names leaves you exactly where you started. Ranking individual items is harder, and it is the entire value. Creators surface because their work was picked, which is a more earned follow than a quiz result.</p>
       <p><strong>Every format in one ranking.</strong> The gap is cross-platform by definition, so articles, newsletters, video, podcasts and books are ranked together and only split apart for display. No platform will ever do this, because each one is a retention tool for its own inventory.</p>
       <p><strong>A score you can interrogate.</strong> Each piece carries a match score out of ten and a substance score, and the reason under it has to name something specific in the piece. A percentage nobody can question is decoration, and it was the first thing I wanted to avoid building.</p>
@@ -179,19 +181,18 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
       <p><strong>Two of the three personalisation controls did nothing.</strong> Adding your years of experience reordered a shortlist that had already been chosen without knowing your level. It looked personalised and changed almost nothing until it was rewired to search again at the right level. A second control was used once in 167 sessions and was deleted rather than fixed.</p>
       <p><strong>Variety was cheaper to fake than to buy.</strong> Keeping repeat visits fresh by generating several different answers per question would have cost real money every month. Measured, the answers overlapped more than four fifths of the time and often differed only in the wording of a heading. What shipped instead rotates which piece leads and reshuffles the close calls, at a fraction of the cost.</p>
       <p><strong>Speed was somebody else's problem.</strong> Briefs were taking fifteen to twenty-five seconds and my first two theories were both wrong. Measurement showed the delay was not in our code at all but in which route the request happened to take, splitting cleanly into fast and very slow with almost nothing in between. Pinning the route, and dropping a check that had been rejecting one answer in five and making it start over, cut the typical wait by three quarters and removed the slow group entirely.</p>
-      <p class="pull">The pattern across all four: every instinct I had about what was wrong was wrong, and measuring took an hour each time.</p>
     </div>
+    <p class="pull">The pattern across all four: every instinct I had about what was wrong was wrong, and measuring took an hour each time.</p>
   </section>
 
   <section class="section doc">
     <div class="kicker">05</div>
     <h2>What I would do differently</h2>
-    <div class="prose">
+    <div class="prose prose-cols">
       <p><strong>Fix coverage before ranking.</strong> The first working version had roughly twenty sources and could not answer a search for a role outside the handful they covered. The ranking was fine; the library could not answer the question. A recommender at this scale is mostly a curation problem wearing an algorithm costume, and I spent the first week on the costume.</p>
       <p><strong>Write each rule once, where it is enforced.</strong> One check demanded the exact wording another instruction forbade, so two fifths of failures were self-inflicted, and the tests had frozen the old rule and were defending the wrong behaviour. Rules now live in one place and the code reads them from there.</p>
       <p><strong>Verify from the outside.</strong> Three faults reached the live site having passed every test, because the files they needed existed on my laptop and nowhere else. One of them would have quietly served stale answers forever. The check that caught them was running the real thing with my local data moved out of the way, and it should have been the first thing I built.</p>
       <p><strong>Treat constraints as a position.</strong> Never fetching profiles, collecting nothing about the reader, refusing to work around a site's own rules: each closed a door, and together they are most of what makes the product defensible to describe.</p>
-      <p class="note">Built with agentic coding from a written spec and a rules file. The product decisions, the source curation and the judgment calls are mine.</p>
     </div>
   </section>
 
