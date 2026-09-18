@@ -43,77 +43,117 @@ p{margin:0}
 .nav-links a:hover{color:var(--accent)}
 
 /* hero */
-.hero{display:flex;flex-direction:column;gap:32px;padding:88px 0 72px;border-bottom:2px solid var(--rule)}
-.hero h1{font-size:clamp(44px,8.5vw,104px);line-height:.92;letter-spacing:-.035em;max-width:14ch}
-.hero p{max-width:56ch;font-size:clamp(17px,2vw,21px);line-height:1.5;color:var(--ink-2);text-wrap:pretty}
+.hero{position:relative;display:flex;flex-direction:column;gap:24px;padding:64px 0 48px;border-bottom:2px solid var(--rule)}
+.hero::before{content:"";position:absolute;inset:0 -24px;pointer-events:none;z-index:0;
+  background-image:repeating-linear-gradient(to right,var(--divider) 0 1px,transparent 1px 12.5%);
+  opacity:.16}
+.hero > *{position:relative;z-index:1}
+.hero .kicker{display:flex;align-items:center;gap:10px}
+.hero .kicker::before{content:"";width:10px;height:10px;background:var(--accent);flex:none}
+.hero h1{font-size:clamp(40px,7.5vw,84px);line-height:.94;letter-spacing:-.035em;max-width:14ch}
+.hero p{max-width:60ch;font-size:clamp(16px,1.8vw,19px);line-height:1.5;color:var(--ink-2);text-wrap:pretty}
 .actions{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-flex;align-items:center;padding:14px 22px;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;border:2px solid var(--ink);transition:background .15s,color .15s}
+.btn{display:inline-flex;align-items:center;gap:9px;padding:14px 22px;font-weight:700;font-size:14px;letter-spacing:.06em;text-transform:uppercase;border:2px solid var(--ink);transition:background .15s,color .15s}
 .btn-primary{background:var(--accent);border-color:var(--accent);color:#fff}
 .btn-primary:hover{background:var(--accent-600);border-color:var(--accent-600);color:#fff}
+.btn svg{width:16px;height:16px;flex:none}
 .btn-secondary{color:var(--ink)}
 .btn-secondary:hover{background:var(--ink);color:var(--bg)}
-.affil{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;padding-top:8px}
+.affil{font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);font-weight:600;padding-top:4px}
 
 /* stats */
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));border-bottom:2px solid var(--rule)}
-.stat{padding:40px 32px;border-right:2px solid var(--rule)}
+.stat{position:relative;padding:28px 32px;border-right:2px solid var(--rule)}
+.stat::before{content:"";position:absolute;top:0;left:0;width:36px;height:4px;background:var(--accent)}
 .stat:first-child{padding-left:0}
+.stat:first-child::before{left:0}
 .stat:last-child{border-right:0;padding-right:0}
-.stat b{display:block;font-weight:900;font-size:clamp(32px,4vw,44px);letter-spacing:-.03em;line-height:1}
-.stat span{display:block;margin-top:12px;font-size:15px;line-height:1.45;color:var(--ink-2);max-width:26ch}
+.stat b{display:block;font-weight:900;font-size:clamp(28px,3.4vw,38px);letter-spacing:-.03em;line-height:1}
+.stat span{display:block;margin-top:8px;font-size:14px;line-height:1.45;color:var(--ink-2);max-width:26ch}
 
 /* what I work on */
-.section{padding:80px 0;border-bottom:2px solid var(--rule)}
-.grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));border-top:2px solid var(--rule);margin-top:24px}
-.grid-2 > li{list-style:none;padding:28px 32px 28px 0;border-bottom:2px solid var(--divider);font-size:17px;line-height:1.45;text-wrap:pretty}
-.grid-2 > li:nth-child(even){padding:28px 0 28px 32px}
-.grid-2 > li:nth-last-child(-n+2){border-bottom:0}
+.section{padding:56px 0;border-bottom:2px solid var(--rule)}
+.grid-2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));column-gap:48px;margin-top:24px;counter-reset:w}
+.grid-2 > li{counter-increment:w;list-style:none;padding:16px 0;border-top:2px solid var(--divider);font-size:16px;line-height:1.4;text-wrap:pretty;display:grid;grid-template-columns:30px 1fr;align-items:baseline}
+.grid-2 > li::before{content:counter(w,decimal-leading-zero);font-size:12px;font-weight:800;letter-spacing:.08em;color:var(--accent);padding-top:3px}
 .grid-2{padding:0;margin-block:24px 0}
 
-/* case studies */
-.cases-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:48px}
-.cases-head h2{margin-top:12px;font-size:clamp(30px,4.5vw,52px);line-height:1}
-.wip{display:flex;align-items:center;gap:10px}
-.wip i{width:8px;height:8px;background:var(--accent);flex:none;display:block}
-.wip span{font-size:12px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--ink-3)}
-.case{padding:40px 0;border-top:2px solid var(--rule)}
-.case:last-of-type{border-bottom:2px solid var(--rule)}
-.case-head{display:flex;gap:20px;align-items:baseline;flex-wrap:wrap}
-.case-num{font-weight:900;font-size:14px;color:var(--accent)}
-.case-head h3{font-size:clamp(24px,3.2vw,36px);letter-spacing:-.025em;line-height:1.05;flex:1 1 320px}
-.tag{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:6px 10px;background:var(--accent-200);color:var(--accent-800)}
-.case-cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:32px;margin-top:28px}
-.case-cols .label{display:block;padding-bottom:10px;border-bottom:2px solid var(--divider)}
-.case-cols p{margin-top:14px;font-size:16px;line-height:1.5;color:var(--ink-2);text-wrap:pretty}
-.case .wip{margin-top:20px}
-
-/* projects */
-.projects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));border-top:2px solid var(--rule);margin-top:24px}
-.project{padding:36px 32px;display:flex;flex-direction:column;gap:16px;border-left:2px solid var(--divider)}
-.project:nth-child(odd){padding-left:0;border-left:0}
-.project:nth-child(even){padding-right:0}
-.project:nth-child(n+3){border-top:2px solid var(--divider)}
-.project:last-child:nth-child(odd){grid-column:1/-1}
-.project-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
-.project h3{font-size:26px;letter-spacing:-.02em}
+/* work tiles */
+.cases-head{margin-bottom:28px}
+.cases-head h2{margin-top:10px;font-size:clamp(28px,4vw,44px);line-height:1}
+.work{display:flex;flex-direction:column;border-top:2px solid var(--rule);margin-top:24px}
+.work-row:has(.device-wrap){grid-template-columns:minmax(0,1fr) minmax(0,46%)}
+.work-row:has(.phones){grid-template-columns:minmax(0,1fr) minmax(0,48%)}
+.work-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,42%);gap:32px;align-items:start;padding:28px 0;border-bottom:2px solid var(--divider)}
+.work-row:last-child{border-bottom:0}
+.shot{position:relative;grid-column:2;margin:0;background:var(--surface);border-top:2px solid var(--rule);aspect-ratio:4/3;padding:12px;display:flex;align-items:center;justify-content:center;cursor:zoom-in}
+.zoom{position:absolute;bottom:8px;right:8px;display:flex;align-items:center;gap:5px;padding:5px 7px;background:var(--bg);border:2px solid var(--ink);color:var(--ink);font:inherit;font-size:9px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;cursor:zoom-in;transition:background .15s,color .15s,border-color .15s}
+.zoom:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+.zoom svg{width:11px;height:11px;flex:none}
+.phones{grid-column:2;display:flex;gap:16px;justify-content:center;align-items:flex-start}
+.device-wrap{grid-column:2;display:flex;flex-direction:column;align-items:center;gap:8px}
+.laptop{margin:0;width:100%;max-width:100%}
+.lid{background:var(--ink);border-radius:9px 9px 2px 2px;padding:10px 10px 13px}
+.screen-l{position:relative;overflow:hidden;background:var(--bg);aspect-ratio:16/10;cursor:zoom-in}
+.screen-l img{display:block;width:100%;height:100%;object-fit:contain;object-position:top center}
+.base{position:relative;height:9px;margin:0 -14px;background:var(--ink-3);border-radius:0 0 7px 7px}
+.monitor{margin:0;width:100%;max-width:100%;display:flex;flex-direction:column;align-items:center}
+.monitor-body{width:100%;background:var(--ink);border-radius:8px;padding:12px 12px 26px}
+.monitor .neck{width:58px;height:26px;background:var(--ink-3)}
+.monitor .foot{width:150px;height:8px;background:var(--ink-3);border-radius:0 0 4px 4px}
+.screen-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;text-align:center;padding:16px}
+.screen-empty b{font-size:13px;letter-spacing:.16em;text-transform:uppercase;font-weight:800;color:var(--ink);min-height:1.2em}
+.screen-empty .caret{display:inline-block;width:8px;height:1em;background:var(--accent);vertical-align:-2px;margin-left:3px;animation:blink 1s steps(1,end) infinite}
+@keyframes blink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){.screen-empty .caret{animation:none}}
+.screen-empty i{width:9px;height:9px;background:var(--accent);display:block}
+.base::after{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:58px;height:3px;background:rgba(243,242,242,.4);border-radius:0 0 3px 3px}
+.phone-wrap{display:flex;flex-direction:column;align-items:center;gap:8px;flex:1 1 0;max-width:190px}
+.phone{position:relative;margin:0;width:100%;background:var(--ink);border-radius:26px;padding:7px}
+.screen{position:relative;overflow:hidden;border-radius:20px;background:var(--bg);aspect-ratio:9/16;cursor:zoom-in}
+.screen img{display:block;width:100%;height:100%;object-fit:contain;object-position:top center}
+.notch{position:absolute;top:7px;left:50%;transform:translateX(-50%);width:32px;height:4px;border-radius:2px;background:rgba(243,242,242,.5);z-index:2}
+.phone-wrap .zoom,.device-wrap .zoom{position:static;border:2px solid var(--divider);padding:5px 8px}
+.phone-cap{font-size:10px;letter-spacing:.12em;text-transform:uppercase;font-weight:800;color:var(--ink-3)}
+.lightbox{border:0;padding:0;margin:auto;background:transparent;max-width:min(94vw,1500px);max-height:94vh}
+.lightbox::backdrop{background:rgba(32,30,29,.88)}
+.lightbox-inner{position:relative;background:var(--bg);border:2px solid var(--ink);padding:14px;display:flex;flex-direction:column;gap:12px}
+.lightbox img{display:block;max-width:100%;max-height:calc(94vh - 90px);width:auto;height:auto;margin:0 auto}
+.lightbox-bar{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.lightbox-bar p{font-size:13px;line-height:1.4;color:var(--ink-3);max-width:70ch}
+.lightbox-close{padding:8px 13px;background:var(--ink);border:2px solid var(--ink);color:var(--bg);font:inherit;font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;flex:none;transition:background .15s,border-color .15s}
+.lightbox-close:hover{background:var(--accent);border-color:var(--accent)}
+.shot img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
+.work-body{grid-column:1;grid-row:1;display:flex;flex-direction:column;gap:12px}
+.work-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.work-head h3{font-size:clamp(20px,2.4vw,26px);letter-spacing:-.02em}
+.work-num{font-weight:900;font-size:12px;letter-spacing:.08em;color:var(--accent);flex:none}
 .pill{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:5px 9px;border:2px solid var(--ink)}
 .pill-accent{border-color:var(--accent);color:var(--accent-700)}
-.project p{font-size:16px;line-height:1.5;color:var(--ink-2);max-width:52ch;text-wrap:pretty}
+.work-body > p{font-size:15px;line-height:1.5;color:var(--ink-2);text-wrap:pretty}
+.tile-outcome{font-size:14px;line-height:1.45;color:var(--ink);border-top:2px solid var(--divider);padding-top:10px;text-wrap:pretty}
+.tile-outcome b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-700);font-weight:800;margin-bottom:5px}
 .chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font-size:12px;font-weight:600;padding:6px 10px;background:var(--surface)}
-.link-underline{align-self:flex-start;margin-top:4px;font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid var(--accent);padding-bottom:3px;color:var(--ink)}
+.chip{font-size:12px;font-weight:600;padding:5px 9px;background:var(--surface)}
+.tile-links{display:flex;flex-wrap:wrap;gap:18px;margin-top:2px}
+.link-underline{align-self:flex-start;font-size:13px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid var(--accent);padding-bottom:3px;color:var(--ink)}
 .link-underline:hover{color:var(--accent)}
 
 /* skills */
-.skills{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px}
-.skills span{font-size:15px;font-weight:600;padding:10px 16px;border:2px solid var(--ink)}
+.skills{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.skills span{font-size:14px;font-weight:600;padding:8px 13px;border:2px solid var(--divider);transition:border-color .15s,color .15s}
+.skills span:hover{border-color:var(--accent);color:var(--accent-700)}
 
 /* contact */
-.contact{background:var(--accent);color:#fff}
-.contact h2{font-size:clamp(36px,7vw,84px);line-height:.95;letter-spacing:-.035em;max-width:16ch}
-.contact .wrap{padding-top:88px;padding-bottom:88px}
-.contact-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px 40px;margin-top:56px;border-top:2px solid #fff;padding-top:32px}
-.contact-links a{color:#fff;font-size:clamp(16px,2vw,20px);font-weight:700;overflow-wrap:anywhere}
+.contact{position:relative;background:var(--accent);color:#fff;overflow:hidden}
+.contact::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:repeating-linear-gradient(to right,rgba(255,255,255,.5) 0 1px,transparent 1px 12.5%);opacity:.28}
+.contact .wrap{position:relative}
+.contact h2{font-size:clamp(34px,6vw,72px);line-height:.95;letter-spacing:-.035em;max-width:16ch}
+.contact .wrap{padding-top:64px;padding-bottom:64px}
+.contact-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px 40px;margin-top:40px;border-top:2px solid #fff;padding-top:24px}
+.contact-links a{display:flex;align-items:center;gap:11px;color:#fff;font-size:clamp(16px,2vw,20px);font-weight:700;overflow-wrap:anywhere}
+.contact-links svg{width:19px;height:19px;flex:none}
 .contact-links a:hover{color:#fff;opacity:.75}
 
 footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
@@ -122,12 +162,19 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 .js [data-reveal].pre{opacity:0;transform:translateY(18px)}
 .js [data-reveal]{transition:opacity .62s cubic-bezier(.2,.7,.3,1),transform .62s cubic-bezier(.2,.7,.3,1)}
 @media (prefers-reduced-motion:reduce){.js [data-reveal].pre{opacity:1;transform:none}}
+@media (max-width:720px){
+  .grid-2{grid-template-columns:1fr;column-gap:0}
+}
+@media (max-width:860px){
+  .work-row{grid-template-columns:1fr;gap:18px}
+  .shot,.phones,.device-wrap{grid-column:1;grid-row:2}
+  .device-wrap{align-items:flex-start}
+  .phones{justify-content:flex-start}
+}
 @media (max-width:980px){
   .stat{padding:32px 0;border-right:0;border-bottom:2px solid var(--divider)}
   .stat:last-child{border-bottom:0}
-  .grid-2 > li,.grid-2 > li:nth-child(even){padding:24px 0}
-  .projects{grid-template-columns:1fr}
-  .project,.project:first-child,.project:last-child{padding:32px 0;border-left:0;border-top:2px solid var(--divider)}
+  .project,.project:first-child,.project:last-child{padding:26px 0;border-left:0;border-top:2px solid var(--divider)}
   .project:first-child{border-top:0}
 }
 </style>
@@ -138,9 +185,8 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
   <header class="nav">
     <div class="brand"><b>Saurabh S.</b><span>Product</span></div>
     <nav class="nav-links">
-      <a href="#work">Work</a>
-      <a href="#cases">Case studies</a>
-      <a href="#projects">Projects</a>
+      <a href="#work">What I do</a>
+      <a href="#cases">Selected work</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -151,8 +197,8 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
     <p>12+ years in consumer e-commerce, fintech, payments and customer growth. Currently building AI and ML products across commerce and payments.</p>
     <div class="actions">
       <a class="btn btn-primary" href="mailto:writeto.saurabhs@gmail.com">Get in touch</a>
-      <a class="btn btn-secondary" href="https://www.linkedin.com/in/saurabhsrivast/">LinkedIn</a>
-      <a class="btn btn-secondary" href="https://github.com/SaurabhS-pm">GitHub</a>
+      <a class="btn btn-secondary" href="https://www.linkedin.com/in/saurabhsrivast/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>LinkedIn</a>
+      <a class="btn btn-secondary" href="https://github.com/SaurabhS-pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg>GitHub</a>
     </div>
     <div class="affil">Global marketplace, Tokyo &amp; Toronto · North American bank · Cross-border payments</div>
   </section>
@@ -164,7 +210,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
   </section>
 
   <section class="section" id="work">
-    <div class="kicker">What I work on</div>
+    <div class="kicker">What I do</div>
     <ul class="grid-2" data-reveal>
       <li>Multi-billion dollar consumer payment platforms — wallets, subscriptions, cross-border rails</li>
       <li>Engagement and gamification platforms — habit-forming loops, loyalty-linked payments, member growth</li>
@@ -177,139 +223,143 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 
   <section class="section" id="cases">
     <div class="cases-head">
-      <div>
-        <div class="kicker">Case studies</div>
-        <h2>Five problems I've taken apart.</h2>
-      </div>
+      <div class="kicker">Selected work</div>
+      <h2>Five problems I've taken apart.</h2>
     </div>
-
-    <article class="case" data-reveal>
-      <div class="case-head">
-        <span class="case-num">01</span>
-        <h3>NexRead: ranking what to read next by intent, using an LLM</h3>
-        <span class="tag">AI Recommendations</span>
-      </div>
-      <div class="case-cols">
-        <div><span class="label">Context</span><p>Learning anything as an adult means assembling your own curriculum across platforms that each recommend only their own inventory, and none of which can accept a goal you state out loud.</p></div>
-        <div><span class="label">What I did</span><p>Built a ranked brief from three tap answers over a curated library of 1,900+ pieces from over 100 sources, with one model call per visit and a reason attached to every recommendation.</p></div>
-        <div><span class="label">Outcome</span><p>Live and serving in about three seconds for under a penny a read, collecting nothing about the reader.</p></div>
-      </div>
-      <a class="link-underline" style="margin-top:24px" href="case-studies/nexread.html">Read the case study</a>
-    </article>
-
-    <article class="case" data-reveal>
-      <div class="case-head">
-        <span class="case-num">02</span>
-        <h3>PaymentIntelligenceOS: mapping merchant payment stacks from public pages</h3>
-        <span class="tag">Payments</span>
-      </div>
-      <div class="case-cols">
-        <div><span class="label">Context</span><p>Payments teams guess at what a prospect already runs. Stack-detection tools flatten everything into one verdict, so you can't tell what was observed from what was assumed.</p></div>
-        <div><span class="label">What I did</span><p>Built a crawler over public pages only — 50 merchants, five countries, 170 signatures across 61 vendors — recording sighted, possible and inferred as separate states.</p></div>
-        <div><span class="label">Outcome</span><p>Found a third-party checkout vendor sitting between store and PSP on half the Indian sample, a layer absent across the other four countries.</p></div>
-      </div>
-      <a class="link-underline" style="margin-top:24px" href="case-studies/paymentintelligenceos.html">Read the case study</a>
-    </article>
-
-    <article class="case" data-reveal>
-      <div class="case-head">
-        <span class="case-num">03</span>
-        <h3>Competitive Intelligence RAG: answering product questions from a competitor's reviews</h3>
-        <span class="tag">RAG</span>
-      </div>
-      <div class="case-cols">
-        <div><span class="label">Context</span><p>PMs monitor competitors by reading reviews, which does not scale. A store's rating summary gives a number and no reason; a listening tool is priced for a marketing team, not a PM with a question on a Tuesday.</p></div>
-        <div><span class="label">What I did</span><p>Built a RAG tool that pulls 500 reviews per app from both stores, embeds them locally, and answers a plain-English question from the retrieved ones with a sentiment breakdown attached.</p></div>
-        <div><span class="label">Outcome</span><p>A confidence threshold showed five to ten percent of reviews are genuinely ambiguous, so the breakdown reports them as uncertain rather than implying precision the data cannot support.</p></div>
-      </div>
-      <a class="link-underline" style="margin-top:24px" href="case-studies/competitive-intel-rag.html">Read the case study</a>
-    </article>
-
-    <article class="case" data-reveal>
-      <div class="case-head">
-        <span class="case-num">04</span>
-        <h3>Cross-border payments, launched in 50+ markets</h3>
-        <span class="tag">Payments</span>
-      </div>
-      <div class="case-cols">
-        <div><span class="label">Context</span><p>A global marketplace needed a single payment experience across dozens of currencies, regulators and card networks.</p></div>
-        <div><span class="label">What I did</span><p>Owned it from strategy through GTM: rail selection, pricing, risk and compliance sequencing, and market-by-market rollout.</p></div>
-        <div><span class="label">Outcome</span><p>Live in 50+ markets on a platform carrying multi-billion dollar GMV.</p></div>
-      </div>
-    </article>
-
-    <article class="case" data-reveal>
-      <div class="case-head">
-        <span class="case-num">05</span>
-        <h3>A voice AI agent for payment support</h3>
-        <span class="tag">Voice AI</span>
-      </div>
-      <div class="case-cols">
-        <div><span class="label">Context</span><p>Declined cards, disputed charges and forgotten subscriptions still arrive by phone, where the hold time often costs more than the transaction.</p></div>
-        <div><span class="label">What I'm building</span><p>A voice agent that resolves the routine cases end to end and hands off with full context when it can't, scoped to the calls where a wrong answer is cheap to correct.</p></div>
-        <div><span class="label">How it gets judged</span><p>Containment rate as the primary metric, with handoff quality as the guardrail: a bad escalation counts as a failure, not a resolution.</p></div>
-      </div>
-      <div class="wip"><i></i><span>Work in progress</span></div>
-    </article>
-  </section>
-
-  <section class="section" id="projects">
-    <div class="kicker">Projects</div>
-    <div class="projects" data-reveal>
-      <div class="project">
-        <div class="project-head">
-          <h3>NexRead</h3>
-          <span class="pill pill-accent">Live</span>
+    <div class="work" id="projects" data-reveal>
+      <div class="work-row">
+        <div class="phones">
+          <div class="phone-wrap">
+            <figure class="phone"><div class="screen"><span class="notch"></span><img src="assets/case-studies/nexread-phone-builder.png" alt="NexRead: answering the three questions that build a brief" loading="lazy" decoding="async"></div></figure>
+            <span class="phone-cap">The three taps</span>
+            <button class="zoom" type="button" aria-label="Zoom: NexRead: answering the three questions that build a brief"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M9 21H3v-6"></path><path d="M21 3l-7 7"></path><path d="M3 21l7-7"></path></svg>Zoom</button>
+          </div>
+          <div class="phone-wrap">
+            <figure class="phone"><div class="screen"><span class="notch"></span><img src="assets/case-studies/nexread-phone-result.png" alt="NexRead: the ranked reading brief with a reason on every pick" loading="lazy" decoding="async"></div></figure>
+            <span class="phone-cap">The ranked brief</span>
+            <button class="zoom" type="button" aria-label="Zoom: NexRead: the ranked reading brief with a reason on every pick"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M9 21H3v-6"></path><path d="M21 3l-7 7"></path><path d="M3 21l7-7"></path></svg>Zoom</button>
+          </div>
         </div>
-        <p>Three taps in, a ranked set of specific things to read, watch or listen to next, drawn from a curated library across every platform. Built because the material exists and nothing indexes it by intent.</p>
-        <div class="chips">
-          <span class="chip">LLM ranking</span><span class="chip">Deno</span><span class="chip">Postgres</span><span class="chip">Recommenders</span><span class="chip">0 to 1</span>
-        </div>
-        <a class="link-underline" href="case-studies/nexread.html">Read the case study</a>
-        <a class="link-underline" href="https://nexread.nexread.deno.net">View the site</a>
-      </div>
-      <div class="project">
-        <div class="project-head">
-          <h3>PaymentIntelligenceOS</h3>
-          <span class="pill">Completed</span>
-        </div>
-        <p>Crawls public merchant pages and maps the payment stack behind them, reporting what was sighted separately from what was inferred.</p>
-        <div class="chips">
-          <span class="chip">Python</span><span class="chip">Crawler</span><span class="chip">Payments</span><span class="chip">0 to 1</span>
-        </div>
-        <a class="link-underline" href="case-studies/paymentintelligenceos.html">Read the case study</a>
-      </div>
-      <div class="project">
-        <div class="project-head">
-          <h3>Competitive Intelligence RAG App</h3>
-          <span class="pill">Completed</span>
-        </div>
-        <p>Scrapes App Store and Google Play reviews, answers product questions about any competitor app with sentiment analysis. Built because I spent too many hours reading reviews manually.</p>
-        <div class="chips">
-          <span class="chip">Python</span><span class="chip">ChromaDB</span><span class="chip">OpenRouter</span>
-          <span class="chip">Streamlit</span><span class="chip">ONNX</span><span class="chip">RAG</span>
-        </div>
-        <a class="link-underline" href="case-studies/competitive-intel-rag.html">Read the case study</a>
-        <a class="link-underline" href="https://github.com/SaurabhS-pm/competitive-intel-rag">View on GitHub</a>
-      </div>
-      <div class="project">
-        <div class="project-head">
-          <h3>Cross-border payments</h3>
-          <span class="pill">Completed</span>
-        </div>
-        <p>A single payment experience across dozens of currencies, regulators and card networks, owned from strategy through GTM and live in 50+ markets.</p>
-        <div class="chips">
-          <span class="chip">Payments</span><span class="chip">Cross-border</span><span class="chip">Card networks</span><span class="chip">GTM</span>
+        <div class="work-body">
+          <div class="work-head">
+            <span class="work-num">01</span>
+            <h3>NexRead</h3>
+            <span class="pill pill-accent">Live</span>
+          </div>
+          <p class="tile-outcome"><b>Problem</b>Learning anything as an adult means assembling your own curriculum across platforms that each recommend only their own inventory, and none of which can accept a goal you state out loud.</p>
+          <p>Three taps in, a ranked set of specific things to read, watch or listen to next, drawn from a curated library of 1,900+ pieces across every platform. Built because the material exists and nothing indexes it by intent.</p>
+          <p class="tile-outcome"><b>Outcome</b>Live and serving in about three seconds for under a penny a read, collecting nothing about the reader.</p>
+          <div class="chips">
+            <span class="chip">LLM ranking</span>
+            <span class="chip">Deno</span>
+            <span class="chip">Postgres</span>
+            <span class="chip">Recommenders</span>
+            <span class="chip">0 to 1</span>
+          </div>
+          <div class="tile-links">
+            <a class="link-underline" href="case-studies/nexread.html">Read the case study</a>
+            <a class="link-underline" href="https://nexread.nexread.deno.net">View the site</a>
+          </div>
         </div>
       </div>
-      <div class="project">
-        <div class="project-head">
-          <h3>Voice AI support agent</h3>
-          <span class="pill pill-accent">In progress</span>
+      <div class="work-row">
+        <div class="device-wrap">
+          <figure class="monitor"><div class="monitor-body"><div class="screen-l"><img src="assets/case-studies/pio-top-crop.png" alt="PaymentIntelligenceOS: the merchant view for herschel.com, with the stack table below it" loading="lazy" decoding="async"></div></div><div class="neck"></div><div class="foot"></div></figure>
+          <span class="phone-cap">The merchant view</span>
+          <button class="zoom" type="button" aria-label="Zoom: PaymentIntelligenceOS, the merchant view for herschel.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M9 21H3v-6"></path><path d="M21 3l-7 7"></path><path d="M3 21l7-7"></path></svg>Zoom</button>
         </div>
-        <p>A voice agent for payment support calls — resolves routine cases, escalates the rest with context attached.</p>
-        <div class="chips">
-          <span class="chip">Voice AI</span><span class="chip">LLMs</span><span class="chip">Python</span><span class="chip">Agentic AI</span>
+        <div class="work-body">
+          <div class="work-head">
+            <span class="work-num">02</span>
+            <h3>PaymentIntelligenceOS</h3>
+            <span class="pill">Completed</span>
+          </div>
+          <p class="tile-outcome"><b>Problem</b>Payments teams guess at what a prospect already runs. Stack-detection tools flatten everything into one verdict, so you can't tell what was observed from what was assumed.</p>
+          <p>Crawls public merchant pages and maps the payment stack behind them — 50 merchants, five countries, 170 signatures across 61 vendors — reporting what was sighted separately from what was inferred.</p>
+          <p class="tile-outcome"><b>Outcome</b>Found a third-party checkout vendor sitting between store and PSP on half the Indian sample, a layer absent across the other four countries.</p>
+          <div class="chips">
+            <span class="chip">Python</span>
+            <span class="chip">Crawler</span>
+            <span class="chip">Payments</span>
+            <span class="chip">0 to 1</span>
+          </div>
+          <div class="tile-links">
+            <a class="link-underline" href="case-studies/paymentintelligenceos.html">Read the case study</a>
+          </div>
+        </div>
+      </div>
+      <div class="work-row">
+        <div class="device-wrap">
+          <figure class="laptop"><div class="lid"><div class="screen-l"><img src="assets/case-studies/ci-rag-app.png" alt="The Competitive Intelligence RAG app answering a product question" loading="lazy" decoding="async"></div></div><div class="base"></div></figure>
+          <span class="phone-cap">The RAG app</span>
+          <button class="zoom" type="button" aria-label="Zoom: The Competitive Intelligence RAG app answering a product question"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M9 21H3v-6"></path><path d="M21 3l-7 7"></path><path d="M3 21l7-7"></path></svg>Zoom</button>
+        </div>
+        <div class="work-body">
+          <div class="work-head">
+            <span class="work-num">03</span>
+            <h3>Competitive Intelligence RAG</h3>
+            <span class="pill">Completed</span>
+          </div>
+          <p class="tile-outcome"><b>Problem</b>PMs monitor competitors by reading reviews, which does not scale. A store's rating summary gives a number and no reason; a listening tool is priced for a marketing team, not a PM with a question on a Tuesday.</p>
+          <p>Pulls 500 reviews per app from both stores, embeds them locally, and answers a plain-English product question from the retrieved ones with a sentiment breakdown attached.</p>
+          <p class="tile-outcome"><b>Outcome</b>A confidence threshold showed five to ten percent of reviews are genuinely ambiguous, so the breakdown reports them as uncertain rather than implying precision the data cannot support.</p>
+          <div class="chips">
+            <span class="chip">Python</span>
+            <span class="chip">ChromaDB</span>
+            <span class="chip">OpenRouter</span>
+            <span class="chip">Streamlit</span>
+            <span class="chip">ONNX</span>
+            <span class="chip">RAG</span>
+          </div>
+          <div class="tile-links">
+            <a class="link-underline" href="case-studies/competitive-intel-rag.html">Read the case study</a>
+            <a class="link-underline" href="https://github.com/SaurabhS-pm/competitive-intel-rag">View on GitHub</a>
+          </div>
+        </div>
+      </div>
+      <div class="work-row">
+        <div class="device-wrap">
+          <figure class="laptop"><div class="lid"><div class="screen-l"><img src="assets/case-studies/cross-border-transfer.png" alt="The global money transfer overview, with the currency watchlist" loading="lazy" decoding="async"></div></div><div class="base"></div></figure>
+          <span class="phone-cap">Global money transfer</span>
+          <button class="zoom" type="button" aria-label="Zoom: The global money transfer overview, with the currency watchlist"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="square" aria-hidden="true"><path d="M15 3h6v6"></path><path d="M9 21H3v-6"></path><path d="M21 3l-7 7"></path><path d="M3 21l7-7"></path></svg>Zoom</button>
+        </div>
+        <div class="work-body">
+          <div class="work-head">
+            <span class="work-num">04</span>
+            <h3>Cross-border payments</h3>
+            <span class="pill">Completed</span>
+          </div>
+          <p class="tile-outcome"><b>Problem</b>A global marketplace needed a single payment experience across dozens of currencies, regulators and card networks.</p>
+          <p>Owned from strategy through GTM: rail selection, pricing, risk and compliance sequencing, and market-by-market rollout.</p>
+          <p class="tile-outcome"><b>Outcome</b>Live in 50+ markets on a platform carrying multi-billion dollar GMV.</p>
+          <div class="chips">
+            <span class="chip">Payments</span>
+            <span class="chip">Cross-border</span>
+            <span class="chip">Card networks</span>
+            <span class="chip">GTM</span>
+          </div>
+        </div>
+      </div>
+      <div class="work-row">
+        <div class="device-wrap">
+          <figure class="monitor"><div class="monitor-body"><div class="screen-l screen-empty" style="cursor:default"><i></i><b id="typed" aria-label="Coming soon"><span id="typed-text"></span><span class="caret"></span></b></div></div><div class="neck"></div><div class="foot"></div></figure>
+          <span class="phone-cap">In build</span>
+        </div>
+        <div class="work-body">
+          <div class="work-head">
+            <span class="work-num">05</span>
+            <h3>Voice AI support agent</h3>
+            <span class="pill pill-accent">In progress</span>
+          </div>
+          <p class="tile-outcome"><b>Problem</b>Declined cards, disputed charges and forgotten subscriptions still arrive by phone, where the hold time often costs more than the transaction.</p>
+          <p>A voice agent that resolves the routine cases and hands off with full context when it can't.</p>
+          <p class="tile-outcome"><b>How it gets judged</b>Containment rate as the primary metric, with handoff quality as the guardrail: a bad escalation counts as a failure, not a resolution.</p>
+          <div class="chips">
+            <span class="chip">Voice AI</span>
+            <span class="chip">LLMs</span>
+            <span class="chip">Python</span>
+            <span class="chip">Agentic AI</span>
+          </div>
         </div>
       </div>
     </div>
@@ -318,7 +368,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
   <section class="section">
     <div class="kicker">Skills &amp; tools</div>
     <div class="skills" data-reveal>
-      <span>RAG</span><span>LLMs</span><span>Python</span><span>Claude API</span><span>Cursor</span>
+      <span>RAG</span><span>LLMs</span><span>Python</span><span>Claude</span><span>APIs</span><span>VS Code</span>
       <span>Fintech</span><span>Consumer Payments</span><span>0 to 1 Products</span><span>Agentic AI</span>
       <span>A/B Experimentation</span><span>Mastercard / Card Networks</span><span>Subscription Platforms</span>
     </div>
@@ -330,16 +380,66 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
     <h2>Open to senior product roles.</h2>
     <div class="contact-links">
       <a href="mailto:writeto.saurabhs@gmail.com">writeto.saurabhs@gmail.com</a>
-      <a href="https://www.linkedin.com/in/saurabhsrivast/">linkedin.com/in/saurabhsrivast</a>
-      <a href="https://github.com/SaurabhS-pm">github.com/SaurabhS-pm</a>
+      <a href="https://www.linkedin.com/in/saurabhsrivast/"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="square" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg><span>linkedin.com/in/saurabhsrivast</span></a>
+      <a href="https://github.com/SaurabhS-pm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path><path d="M9 18c-4.51 2-5-2-7-2"></path></svg><span>github.com/SaurabhS-pm</span></a>
     </div>
   </div>
 </section>
+
+<dialog class="lightbox" id="lightbox" aria-label="Screenshot">
+  <div class="lightbox-inner">
+    <img id="lightbox-img" alt="">
+    <div class="lightbox-bar">
+      <p id="lightbox-cap"></p>
+      <button class="lightbox-close" type="button" id="lightbox-close">Close</button>
+    </div>
+  </div>
+</dialog>
 
 <footer class="wrap">Built without frameworks. Hand-written HTML and CSS.</footer>
 
 <script>
 document.documentElement.classList.add('js');
+(function () {
+  var host = document.getElementById('typed'), out = document.getElementById('typed-text');
+  if (!host || !out) return;
+  var word = 'Coming soon';
+  if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) { out.textContent = word; return; }
+  var started = false;
+  function type() {
+    if (started) return;
+    started = true;
+    var i = 0;
+    (function step() {
+      out.textContent = word.slice(0, ++i);
+      if (i < word.length) setTimeout(step, 110);
+      else setTimeout(function () { out.textContent = ''; started = false; setTimeout(type, 700); }, 2600);
+    })();
+  }
+  if (!('IntersectionObserver' in window)) { type(); return; }
+  var io = new IntersectionObserver(function (es) {
+    es.forEach(function (e) { if (e.isIntersecting) type(); });
+  }, { threshold: 0.4 });
+  io.observe(host);
+})();
+(function () {
+  var dlg = document.getElementById('lightbox');
+  if (!dlg || !dlg.showModal) return;
+  var img = document.getElementById('lightbox-img'), cap = document.getElementById('lightbox-cap');
+  document.addEventListener('click', function (e) {
+    var host = e.target.closest ? e.target.closest('.shot, .screen, .screen-l, .phone-wrap, .device-wrap') : null;
+    if (host && host.querySelector('img')) {
+      var src = host.querySelector('img');
+      img.alt = '';
+      img.src = src.getAttribute('src');
+      cap.textContent = src.getAttribute('alt') || '';
+      dlg.showModal();
+      return;
+    }
+    if (e.target.id === 'lightbox-close' || e.target === dlg) dlg.close();
+  });
+  dlg.addEventListener('close', function () { img.removeAttribute('src'); });
+})();
 (function () {
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var els = [].slice.call(document.querySelectorAll('[data-reveal]'));
