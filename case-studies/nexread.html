@@ -59,18 +59,19 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;bac
 figure{margin:32px 0 0}
 figure img{display:block;width:100%;height:auto;border:2px solid var(--rule);background:var(--surface)}
 figcaption{margin-top:10px;font-size:13px;line-height:1.45;color:var(--ink-3);max-width:52ch}
-/* document layout: text at a 720px reading measure; figures below the text, sized
-   to the measure, paired, or run to the full page width depending on their shape */
+/* document layout: text and figures share the full page width, so every section has
+   one left and one right edge. Full-width lines get extra leading; list sections run
+   in two columns, which also keeps their lines at a comfortable length */
 .hero.doc h1{max-width:24ch}
-.hero.doc p{max-width:720px}
+.hero.doc p{max-width:none;line-height:1.6}
 .hero.doc .link-underline{align-self:flex-start}
-.doc .prose{max-width:720px}
-.prose-cols{display:block;column-count:2;column-gap:56px;max-width:none}
-.doc .prose-cols{max-width:none}
+.doc .prose{max-width:none}
+.doc .prose p{line-height:1.8}
+.prose-cols{display:block;column-count:2;column-gap:56px}
+.doc .prose-cols p{line-height:1.6}
 .prose-cols > p{break-inside:avoid;margin:0 0 22px}
 .section > p.pull{margin-top:48px;padding-top:28px;border-top:2px solid var(--rule);max-width:none;font-size:clamp(22px,2.6vw,30px);line-height:1.22;font-weight:800;letter-spacing:-.02em;color:var(--ink);text-wrap:balance}
-.fig-measure{max-width:720px}
-.fig-pair{display:grid;grid-template-columns:repeat(2,minmax(0,460px));gap:56px;justify-content:center;margin-top:40px}
+.fig-pair{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:56px;margin-top:40px}
 .fig-pair figure{margin-top:0}
 
 .back{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:40px 0}
@@ -80,7 +81,7 @@ figcaption{margin-top:10px;font-size:13px;line-height:1.45;color:var(--ink-3);ma
 footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 
 @media (max-width:860px){
-  .fig-pair{grid-template-columns:minmax(0,340px);justify-content:start;gap:32px}
+  .fig-pair{grid-template-columns:minmax(0,340px);gap:32px}
   .prose-cols{column-count:1}
 }
 @media (max-width:640px){
