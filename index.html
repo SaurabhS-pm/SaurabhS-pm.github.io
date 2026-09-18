@@ -125,10 +125,11 @@ p{margin:0}
 .lightbox-close:hover{background:var(--accent);border-color:var(--accent)}
 .shot img{display:block;max-width:100%;max-height:100%;width:auto;height:auto;object-fit:contain}
 .work-body{grid-column:1;grid-row:1;display:flex;flex-direction:column;gap:12px}
-.work-head{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;row-gap:10px;align-items:baseline}
-.work-head h3{font-size:clamp(20px,2.4vw,26px);line-height:1.2;letter-spacing:-.02em;text-wrap:pretty}
-.work-sub{font-size:.72em;font-weight:500;letter-spacing:-.01em;color:var(--ink-2)}
-.work-tags{grid-column:2;display:flex;flex-wrap:wrap;align-items:center;gap:8px}
+.work-head{display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:12px;row-gap:6px;align-items:baseline}
+.work-title{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px}
+.work-head h3{font-size:clamp(20px,2.4vw,26px);line-height:1.15;letter-spacing:-.02em}
+.work-sub{grid-column:2;font-size:16px;line-height:1.4;font-weight:500;color:var(--ink-2);text-wrap:pretty}
+.work-tags{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
 .work-num{font-weight:900;font-size:12px;letter-spacing:.08em;color:var(--accent);flex:none}
 .pill{font-size:11px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:5px 9px;border:2px solid var(--ink)}
 .pill-accent{border-color:var(--accent);color:var(--accent-700)}
@@ -169,7 +170,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
   .grid-2{grid-template-columns:1fr;column-gap:0}
 }
 @media (max-width:860px){
-  .work-row{grid-template-columns:1fr;gap:18px}
+  .work-row,.work-row:has(.device-wrap),.work-row:has(.phones){grid-template-columns:minmax(0,1fr);gap:18px}
   .shot,.phones,.device-wrap{grid-column:1;grid-row:2}
   .device-wrap{align-items:flex-start}
   .phones{justify-content:flex-start}
@@ -246,11 +247,14 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
         <div class="work-body">
           <div class="work-head">
             <span class="work-num">01</span>
-            <h3>NexRead:<span class="work-sub"> ranking what to read next by intent, using an LLM</span></h3>
-            <div class="work-tags">
-              <span class="tag">AI Recommendations</span>
-              <span class="pill pill-accent">Live</span>
+            <div class="work-title">
+              <h3>NexRead</h3>
+              <div class="work-tags">
+                <span class="tag">AI Recommendations</span>
+                <span class="pill pill-accent">Live</span>
+              </div>
             </div>
+            <p class="work-sub">Ranking what to read next by intent, using an LLM</p>
           </div>
           <p class="tile-outcome"><b>Problem</b>Learning anything as an adult means assembling your own curriculum across platforms that each recommend only their own inventory, and none of which can accept a goal you state out loud.</p>
           <p class="tile-outcome"><b>Solution</b>Answers three tap questions about where you are and what you are after, then ranks a curated library of 1,900+ pieces across video, newsletters, podcasts and books into a short brief, with a match score and a reason on every pick.</p>
@@ -277,11 +281,14 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
         <div class="work-body">
           <div class="work-head">
             <span class="work-num">02</span>
-            <h3>PaymentIntelligenceOS:<span class="work-sub"> mapping merchant payment stacks from public pages</span></h3>
-            <div class="work-tags">
-              <span class="tag">Payments</span>
-              <span class="pill">Completed</span>
+            <div class="work-title">
+              <h3>PaymentIntelligenceOS</h3>
+              <div class="work-tags">
+                <span class="tag">Payments</span>
+                <span class="pill">Completed</span>
+              </div>
             </div>
+            <p class="work-sub">Mapping merchant payment stacks from public pages</p>
           </div>
           <p class="tile-outcome"><b>Problem</b>Payments teams guess at what a prospect already runs. Stack-detection tools flatten everything into one verdict, so you can't tell what was observed from what was assumed.</p>
           <p class="tile-outcome"><b>Solution</b>Crawls public merchant pages and maps the payment stack behind them — 50 merchants, five countries, 170 signatures across 61 vendors — reporting what was sighted separately from what was inferred.</p>
@@ -305,11 +312,14 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
         <div class="work-body">
           <div class="work-head">
             <span class="work-num">03</span>
-            <h3>Competitive Intelligence RAG:<span class="work-sub"> answering product questions from a competitor's reviews</span></h3>
-            <div class="work-tags">
-              <span class="tag">RAG</span>
-              <span class="pill">Completed</span>
+            <div class="work-title">
+              <h3>Competitive Intelligence RAG</h3>
+              <div class="work-tags">
+                <span class="tag">RAG</span>
+                <span class="pill">Completed</span>
+              </div>
             </div>
+            <p class="work-sub">Answering product questions from a competitor's reviews</p>
           </div>
           <p class="tile-outcome"><b>Problem</b>PMs monitor competitors by reading reviews, which does not scale. A store's rating summary gives a number and no reason; a listening tool is priced for a marketing team, not a PM with a question on a Tuesday.</p>
           <p class="tile-outcome"><b>Solution</b>Pulls 500 reviews per app from both stores, embeds them locally, and answers a plain-English product question from the retrieved ones with a sentiment breakdown attached.</p>
@@ -336,11 +346,14 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
         <div class="work-body">
           <div class="work-head">
             <span class="work-num">04</span>
-            <h3>Cross-border payments:<span class="work-sub"> one payment experience across 50+ markets</span></h3>
-            <div class="work-tags">
-              <span class="tag">Payments</span>
-              <span class="pill">Completed</span>
+            <div class="work-title">
+              <h3>Cross-border payments</h3>
+              <div class="work-tags">
+                <span class="tag">Payments</span>
+                <span class="pill">Completed</span>
+              </div>
             </div>
+            <p class="work-sub">One payment experience across 50+ markets</p>
           </div>
           <p class="tile-outcome"><b>Problem</b>A global marketplace needed a single payment experience across dozens of currencies, regulators and card networks.</p>
           <p class="tile-outcome"><b>Solution</b>Owned from strategy through GTM: rail selection, pricing, risk and compliance sequencing, and market-by-market rollout.</p>
@@ -360,11 +373,14 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
         <div class="work-body">
           <div class="work-head">
             <span class="work-num">05</span>
-            <h3>Voice AI support agent:<span class="work-sub"> resolving routine payment support calls</span></h3>
-            <div class="work-tags">
-              <span class="tag">Voice AI</span>
-              <span class="pill pill-accent">In progress</span>
+            <div class="work-title">
+              <h3>Voice AI support agent</h3>
+              <div class="work-tags">
+                <span class="tag">Voice AI</span>
+                <span class="pill pill-accent">In progress</span>
+              </div>
             </div>
+            <p class="work-sub">Resolving routine payment support calls</p>
           </div>
           <p class="tile-outcome"><b>Problem</b>Declined cards, disputed charges and forgotten subscriptions still arrive by phone, where the hold time often costs more than the transaction.</p>
           <p class="tile-outcome"><b>What I'm building</b>A voice agent that resolves the routine cases and hands off with full context when it can't.</p>
