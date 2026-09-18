@@ -59,9 +59,25 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;bac
 figure{margin:32px 0 0}
 figure img{display:block;width:100%;height:auto;border:2px solid var(--rule);background:var(--surface)}
 figcaption{margin-top:10px;font-size:13px;line-height:1.45;color:var(--ink-3);max-width:52ch}
-.side{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:36px;align-items:start;margin-top:28px}
-.side .prose{margin-top:0}
-.side figure{margin-top:0}
+/* document layout: an indented reading column with the section number in the margin;
+   figures sit beside the text, break out to the right edge, or run the full width */
+.wrap{--gut:200px}
+.doc{display:grid;grid-template-columns:[full-start] minmax(0,var(--gut)) [text-start] minmax(0,620px) [text-end] minmax(0,1fr) [full-end]}
+.doc > *{grid-column:text}
+.doc > .kicker{grid-column:full-start/text-start;grid-row:1;align-self:baseline}
+.doc > h1,.doc > h2{grid-row:1;align-self:baseline}
+.doc > h1{grid-column:text-start/full-end}
+.section.doc h2{margin-top:0}
+.hero.doc{row-gap:24px}
+.doc .prose{max-width:none}
+.doc > .link-underline{justify-self:start}
+.doc > .fig-wide,.doc > .beside{grid-column:text-start/full-end}
+.doc > .fig-full{grid-column:full}
+.fig-full figcaption{margin-left:var(--gut)}
+.beside{--fig:340px;display:grid;grid-template-columns:minmax(0,1fr) var(--fig);gap:40px;align-items:start;margin-top:32px}
+.beside-shot{--fig:460px}
+.beside .prose,.beside figure{margin-top:0}
+.stats,.back{margin-left:var(--gut)}
 
 .back{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:40px 0}
 .link-underline{font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid var(--accent);padding-bottom:3px;color:var(--ink)}
@@ -70,7 +86,13 @@ figcaption{margin-top:10px;font-size:13px;line-height:1.45;color:var(--ink-3);ma
 footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 
 @media (max-width:860px){
-  .side{grid-template-columns:1fr;gap:24px}
+  .doc{display:block}
+  .hero.doc{display:flex}
+  .fig-full figcaption{margin-left:0}
+  .section.doc h2{margin-top:12px}
+  .beside{grid-template-columns:minmax(0,1fr);gap:24px}
+  .beside figure{max-width:var(--fig)}
+  .stats,.back{margin-left:0}
 }
 @media (max-width:640px){
   .section{padding:44px 0}
@@ -88,7 +110,6 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 /* pull quote */
 .prose p.pull{border-left:2px solid var(--accent);padding:2px 0 2px 20px;color:var(--ink);font-weight:600}
 .prose p.note{font-size:13px;line-height:1.45;color:var(--ink-3);border-top:2px solid var(--divider);padding-top:14px;margin-top:12px}
-.side figure.phone-fig{max-width:340px}
 
 @media (max-width:640px){
   .stats{grid-template-columns:1fr}
@@ -109,7 +130,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
     </nav>
   </header>
 
-  <section class="hero">
+  <section class="hero doc">
     <div class="kicker">Case study</div>
     <h1>NexRead: ranking what to read next by intent, using an LLM</h1>
     <p>Say where you are and what you are after. Get back a short, ranked set of specific things to read, watch or listen to next, drawn from across every platform, with a reason attached to each.</p>
@@ -122,7 +143,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
     <div class="stat"><b>~3s</b><span>per brief, under a penny</span></div>
   </section>
 
-  <section class="section">
+  <section class="section doc">
     <div class="kicker">01</div>
     <h2>Problem</h2>
     <div class="prose">
@@ -133,45 +154,45 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
     </div>
   </section>
 
-  <section class="section">
+  <section class="section doc">
     <div class="kicker">02</div>
     <h2>Approach</h2>
-    <div class="side">
+    <div class="beside">
       <div class="prose">
         <p>The input is a sentence you finish in three taps. Where you are, what you are after, and the specific thing. "I am job searching now and I am stuck on not getting screens." Six situations, each offering the intents that make sense for it, and a final blank that is either a short list or a search over the topics the library genuinely covers.</p>
         <p>Behind it sit two halves that never run in the same place. Overnight, a pipeline reads a curated set of public sources, works out what each new piece is about, who it is pitched at and whether it has substance, and packs the result into one compact bundle. The live site loads that bundle into memory and spends one model call per visit turning the best candidates into two or three named areas, each with a match score and a one-line reason that has to point at something in the piece itself.</p>
         <p>The library is a curated sample, not an index of the field. It covers product, engineering, recruiting, design, data, finance, sales, marketing, operations, people leadership, and more recently medicine, law and research, and it says "not covered yet" rather than guessing when a question falls outside that.</p>
       </div>
-      <figure class="phone-fig">
+      <figure>
         <a href="../assets/case-studies/nexread-phone-builder.png"><img src="../assets/case-studies/nexread-phone-builder.png" alt="The sentence builder partway through. The sentence reads &quot;I am job searching now and I want to what I am after&quot;, with the first answer filled in and the second blank highlighted. Below it, four choices: fix a specific problem, target a role, keep up with a field, figure out what's next. A counter reads 1 of 3 answered." width="2066" height="3312" loading="lazy" decoding="async"></a>
         <figcaption>The whole input. Three taps, no account, and nothing collected about the reader: no sign-in, no profile pull, no browsing history.</figcaption>
       </figure>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section doc">
     <div class="kicker">03</div>
     <h2>Key decisions</h2>
     <div class="prose">
       <p><strong>Recommend pieces, not people.</strong> Following someone is a proxy for what you actually want. Even an excellent creator posts filler most weeks, so a list of names leaves you exactly where you started. Ranking individual items is harder, and it is the entire value. Creators surface because their work was picked, which is a more earned follow than a quiz result.</p>
       <p><strong>Every format in one ranking.</strong> The gap is cross-platform by definition, so articles, newsletters, video, podcasts and books are ranked together and only split apart for display. No platform will ever do this, because each one is a retention tool for its own inventory.</p>
-      <p><strong>A score you can interrogate.</strong> Each piece carries a match score out of ten and a substance score, and the reason under it has to name something specific in the piece. A percentage nobody can question is decoration, and it was the first thing I wanted to avoid building.</p>
-      <p><strong>A thin answer says so.</strong> Where the library has one good piece for an area, the brief shows one and says more is coming. Padding to a fixed count is what you do when you cannot admit a gap, and it is the fastest way to make every other score on the page untrustworthy.</p>
     </div>
 
-    <div class="side">
+    <div class="beside">
       <div class="prose">
+        <p><strong>A score you can interrogate.</strong> Each piece carries a match score out of ten and a substance score, and the reason under it has to name something specific in the piece. A percentage nobody can question is decoration, and it was the first thing I wanted to avoid building.</p>
+        <p><strong>A thin answer says so.</strong> Where the library has one good piece for an area, the brief shows one and says more is coming. Padding to a fixed count is what you do when you cannot admit a gap, and it is the fastest way to make every other score on the page untrustworthy.</p>
         <p><strong>Tell people what to skip.</strong> An optional reads section names things that are widely shared and wrong for this particular person, with the mismatch stated. No engagement-optimised feed will ever do that, which is exactly why it is worth having.</p>
         <p><strong>Collect nothing, and stay inside the rules.</strong> No account, no sign-in, no history, no IP address stored. Profiles on networks that forbid automated access are never fetched, and a site telling us not to read something is respected rather than worked around. One feature was rebuilt against a different provider mid-build for precisely that reason.</p>
       </div>
-      <figure class="phone-fig">
+      <figure>
         <a href="../assets/case-studies/nexread-phone-result.png"><img src="../assets/case-studies/nexread-phone-result.png" alt="A finished read titled &quot;Keeping up with clinical developments in medicine&quot;, built from the answers job searching now, keep up with a field, and Medicine. Two ranked newsletter pieces sit under the area heading Clinical practice updates, numbered 01 and 02. Each shows its publication, reading time, a match score and a substance score out of ten, and a one-line reason naming what the piece covers." width="2066" height="3260" loading="lazy" decoding="async"></a>
         <figcaption>One brief: ranked pieces with a reason each, the area they belong to, books as background reading, and people who coach that area.</figcaption>
       </figure>
     </div>
   </section>
 
-  <section class="section">
+  <section class="section doc">
     <div class="kicker">04</div>
     <h2>What I found</h2>
     <div class="prose">
@@ -183,7 +204,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
     </div>
   </section>
 
-  <section class="section">
+  <section class="section doc">
     <div class="kicker">05</div>
     <h2>What I would do differently</h2>
     <div class="prose">

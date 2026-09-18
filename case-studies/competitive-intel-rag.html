@@ -42,7 +42,6 @@ p{margin:0}
 /* hero */
 .hero{display:flex;flex-direction:column;gap:24px;padding:72px 0 56px;border-bottom:2px solid var(--rule)}
 .hero h1{font-size:clamp(26px,5.6vw,64px);line-height:1;letter-spacing:-.035em;max-width:20ch}
-.hero .link-underline{align-self:flex-start}
 .hero p{max-width:60ch;font-size:clamp(17px,2vw,21px);line-height:1.5;color:var(--ink-2);text-wrap:pretty}
 .tags{display:flex;flex-wrap:wrap;gap:8px}
 .tag{font-size:12px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:6px 10px;background:var(--accent-200);color:var(--accent-800)}
@@ -60,9 +59,25 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;bac
 figure{margin:32px 0 0}
 figure img{display:block;width:100%;height:auto;border:2px solid var(--rule);background:var(--surface)}
 figcaption{margin-top:10px;font-size:13px;line-height:1.45;color:var(--ink-3);max-width:52ch}
-.side{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:36px;align-items:start;margin-top:28px}
-.side .prose{margin-top:0}
-.side figure{margin-top:0}
+/* document layout: an indented reading column with the section number in the margin;
+   figures sit beside the text, break out to the right edge, or run the full width */
+.wrap{--gut:200px}
+.doc{display:grid;grid-template-columns:[full-start] minmax(0,var(--gut)) [text-start] minmax(0,620px) [text-end] minmax(0,1fr) [full-end]}
+.doc > *{grid-column:text}
+.doc > .kicker{grid-column:full-start/text-start;grid-row:1;align-self:baseline}
+.doc > h1,.doc > h2{grid-row:1;align-self:baseline}
+.doc > h1{grid-column:text-start/full-end}
+.section.doc h2{margin-top:0}
+.hero.doc{row-gap:24px}
+.doc .prose{max-width:none}
+.doc > .link-underline{justify-self:start}
+.doc > .fig-wide,.doc > .beside{grid-column:text-start/full-end}
+.doc > .fig-full{grid-column:full}
+.fig-full figcaption{margin-left:var(--gut)}
+.beside{--fig:340px;display:grid;grid-template-columns:minmax(0,1fr) var(--fig);gap:40px;align-items:start;margin-top:32px}
+.beside-shot{--fig:460px}
+.beside .prose,.beside figure{margin-top:0}
+.stats,.back{margin-left:var(--gut)}
 
 .back{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:40px 0}
 .link-underline{font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid var(--accent);padding-bottom:3px;color:var(--ink)}
@@ -71,7 +86,13 @@ figcaption{margin-top:10px;font-size:13px;line-height:1.45;color:var(--ink-3);ma
 footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 
 @media (max-width:860px){
-  .side{grid-template-columns:1fr;gap:24px}
+  .doc{display:block}
+  .hero.doc{display:flex}
+  .fig-full figcaption{margin-left:0}
+  .section.doc h2{margin-top:12px}
+  .beside{grid-template-columns:minmax(0,1fr);gap:24px}
+  .beside figure{max-width:var(--fig)}
+  .stats,.back{margin-left:0}
 }
 @media (max-width:640px){
   .section{padding:44px 0}
@@ -108,7 +129,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
     </nav>
   </header>
 
-  <section class="hero">
+  <section class="hero doc">
     <div class="kicker">Case study</div>
     <h1>Competitive Intelligence RAG: answering product questions from a competitor's reviews</h1>
     <p>Five hundred reviews per app across two stores, answered in plain English, with one rule: an ambiguous review is not counted as a positive one.</p>
@@ -126,7 +147,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
     <div class="stat"><b>5 to 10%</b><span>Of reviews genuinely ambiguous, and reported as such</span></div>
   </section>
 
-  <section class="section">
+  <section class="section doc">
     <div class="kicker">01</div>
     <h2>Problem</h2>
     <div class="prose">
@@ -136,7 +157,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
     </div>
   </section>
 
-  <section class="section">
+  <section class="section doc">
     <div class="kicker">02</div>
     <h2>Approach</h2>
     <div class="prose">
@@ -144,13 +165,13 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
       <p>Up to 500 reviews per app, deduplicated by text before anything else happens. Reviews are chunked at sentence boundaries into roughly 200-character segments and embedded locally, so nothing goes to a paid embedding service. Retrieval is similarity search over a local vector store, scoped to the feature area first when one is given. The answer is assembled by an LLM through a model-agnostic gateway, with retry and backoff for rate limits.</p>
       <p>Free to clone and run, which was a constraint rather than an afterthought. The intended user is another PM who wants an answer this afternoon, not a procurement conversation.</p>
     </div>
-    <figure>
+    <figure class="fig-full">
       <a href="../assets/case-studies/ci-rag-app.png"><img src="../assets/case-studies/ci-rag-app.png" alt="The app answering a question about Revolut's bank account feature. A written answer sits above a sentiment breakdown reading positive 20 percent, negative 60 percent, neutral 0 percent and uncertain 20 percent, with the sample reviews the answer was drawn from listed below." width="1416" height="715" loading="lazy" decoding="async"></a>
       <figcaption>One query against Revolut's reviews, scoped to the bank account area: a grounded answer, the sentiment split with its Uncertain bucket, and the reviews the answer was built from.</figcaption>
     </figure>
   </section>
 
-  <section class="section">
+  <section class="section doc">
     <div class="kicker">03</div>
     <h2>Key decisions</h2>
     <div class="prose">
@@ -162,7 +183,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
     </div>
   </section>
 
-  <section class="section">
+  <section class="section doc">
     <div class="kicker">04</div>
     <h2>What I found</h2>
     <div class="prose">
@@ -173,7 +194,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
     </div>
   </section>
 
-  <section class="section">
+  <section class="section doc">
     <div class="kicker">05</div>
     <h2>What I would do differently</h2>
     <div class="prose">

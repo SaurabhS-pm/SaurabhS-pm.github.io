@@ -59,9 +59,25 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.92em;bac
 figure{margin:32px 0 0}
 figure img{display:block;width:100%;height:auto;border:2px solid var(--rule);background:var(--surface)}
 figcaption{margin-top:10px;font-size:13px;line-height:1.45;color:var(--ink-3);max-width:52ch}
-.side{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:36px;align-items:start;margin-top:28px}
-.side .prose{margin-top:0}
-.side figure{margin-top:0}
+/* document layout: an indented reading column with the section number in the margin;
+   figures sit beside the text, break out to the right edge, or run the full width */
+.wrap{--gut:200px}
+.doc{display:grid;grid-template-columns:[full-start] minmax(0,var(--gut)) [text-start] minmax(0,620px) [text-end] minmax(0,1fr) [full-end]}
+.doc > *{grid-column:text}
+.doc > .kicker{grid-column:full-start/text-start;grid-row:1;align-self:baseline}
+.doc > h1,.doc > h2{grid-row:1;align-self:baseline}
+.doc > h1{grid-column:text-start/full-end}
+.section.doc h2{margin-top:0}
+.hero.doc{row-gap:24px}
+.doc .prose{max-width:none}
+.doc > .link-underline{justify-self:start}
+.doc > .fig-wide,.doc > .beside{grid-column:text-start/full-end}
+.doc > .fig-full{grid-column:full}
+.fig-full figcaption{margin-left:var(--gut)}
+.beside{--fig:340px;display:grid;grid-template-columns:minmax(0,1fr) var(--fig);gap:40px;align-items:start;margin-top:32px}
+.beside-shot{--fig:460px}
+.beside .prose,.beside figure{margin-top:0}
+.stats,.back{margin-left:var(--gut)}
 
 .back{display:flex;justify-content:space-between;gap:24px;flex-wrap:wrap;padding:40px 0}
 .link-underline{font-size:14px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid var(--accent);padding-bottom:3px;color:var(--ink)}
@@ -70,7 +86,13 @@ figcaption{margin-top:10px;font-size:13px;line-height:1.45;color:var(--ink-3);ma
 footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 
 @media (max-width:860px){
-  .side{grid-template-columns:1fr;gap:24px}
+  .doc{display:block}
+  .hero.doc{display:flex}
+  .fig-full figcaption{margin-left:0}
+  .section.doc h2{margin-top:12px}
+  .beside{grid-template-columns:minmax(0,1fr);gap:24px}
+  .beside figure{max-width:var(--fig)}
+  .stats,.back{margin-left:0}
 }
 @media (max-width:640px){
   .section{padding:44px 0}
@@ -89,14 +111,14 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
     </nav>
   </header>
 
-  <section class="hero">
+  <section class="hero doc">
     <div class="kicker">Case study</div>
     <h1>PaymentIntelligenceOS: mapping merchant payment stacks from public pages</h1>
     <p>Fifty merchants across five countries, 170 signatures, and one rule: never report an assumption as an observation.</p>
     <div class="tags"><span class="tag">Payments</span><span class="tag">Crawler</span><span class="tag">0 to 1</span></div>
   </section>
 
-  <section class="section">
+  <section class="section doc">
     <div class="kicker">01</div>
     <h2>Problem</h2>
     <div class="prose">
@@ -104,61 +126,55 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
     </div>
   </section>
 
-  <section class="section">
+  <section class="section doc">
     <div class="kicker">02</div>
     <h2>Approach</h2>
     <div class="prose">
       <p>I built a crawler that reads public pages only. No accounts, no logins, no forms submitted, robots.txt honoured, two seconds between requests, at most six pages per site and one crawl per site per week. Detection is deterministic signature matching with no model in the path, and every detection stores the signature id, the page URL and the matched snippet, capped at 200 characters.</p>
       <p>Fifty merchants across the US, Canada, the UK, Japan and India. Forty-eight crawled cleanly. 170 signatures covering 61 vendors across platform, PSP, wallet, BNPL and checkout vendor. Fifty merchants is a sample, not a census. The regional finding below is a hypothesis worth testing at scale, not a market statistic.</p>
     </div>
-    <figure>
+    <figure class="fig-wide">
       <a href="../assets/case-studies/pio-explorer.png"><img src="../assets/case-studies/pio-explorer.png" alt="The PaymentIntelligenceOS merchant explorer: filter facets counting country, platform, PSP, wallet, BNPL and checkout vendor, above a table of crawled merchants where inferred detections carry an INFERRED label."></a>
       <figcaption>The explorer: every facet counted across the sample, and each detection carrying its state — sighted, possible or inferred — in the row itself rather than in a footnote.</figcaption>
     </figure>
   </section>
 
-  <section class="section">
+  <section class="section doc">
     <div class="kicker">03</div>
     <h2>Key decisions</h2>
 
-    <div class="side">
+    <div class="beside beside-shot">
       <div class="prose">
         <p><strong>Three states, not one.</strong> Sighted, possible and inferred are recorded separately and shown separately. This matters most for PSP: on a Shopify store the processor cannot be sighted at all, because Shopify Payments is server-side and emits no client-side script. PSP coverage is 10 percent sighted and 75 percent once the platform-native inference is applied. Reporting only the higher number would have been the flattering choice and the wrong one.</p>
+        <p><strong>Deleting the browser step.</strong> To sight PSPs directly I built a headless browser that added an item to the cart and opened checkout. Standard Shopify robots.txt disallows /cart and /checkout, which we honour, so I tested it on five sites whose robots.txt permits both. One reached a checkout. It carried no PSP scripts, for the reason above. I deleted the feature rather than carry unproven code, and wrote down why.</p>
       </div>
       <figure>
         <a href="../assets/case-studies/pio-merchant-herschel.png"><img src="../assets/case-studies/pio-merchant-herschel.png" alt="Merchant detail for herschel.com, showing Stripe sighted as the PSP with an evidence row citing psp.stripe.js on the payment_info page."></a>
         <figcaption>herschel.com, the 10 percent case: the PSP is sighted, not assumed — <code>psp.stripe.js</code> firing on the payment-info page, with the matched snippet stored next to it.</figcaption>
       </figure>
     </div>
-
-    <div class="prose">
-      <p><strong>Deleting the browser step.</strong> To sight PSPs directly I built a headless browser that added an item to the cart and opened checkout. Standard Shopify robots.txt disallows /cart and /checkout, which we honour, so I tested it on five sites whose robots.txt permits both. One reached a checkout. It carried no PSP scripts, for the reason above. I deleted the feature rather than carry unproven code, and wrote down why.</p>
-    </div>
   </section>
 
-  <section class="section">
+  <section class="section doc">
     <div class="kicker">04</div>
     <h2>What I found</h2>
     <div class="prose">
       <p>Coverage across the sample: platform 77 percent, wallets 54 percent, BNPL 10 percent, checkout vendor 17 percent.</p>
     </div>
 
-    <div class="side">
+    <div class="beside beside-shot">
       <div class="prose">
         <p>The finding worth the whole exercise is regional. Half the Indian merchants sampled, five of ten, run a third-party checkout vendor between the store and the PSP: GoKwik on all five, with Shopflo showing as a weaker signal on one of them. That layer appears on no merchant in the other four countries. It changes who the commercial conversation is with, because the checkout vendor owns the payment method mix that the PSP used to own.</p>
+        <p>Separately, making the unknown-host leaderboard show only hosts nobody had reviewed yet immediately exposed two live detection misses: a Square subdomain my pattern had pinned one level too deep, and a Klarna EU domain no pattern covered. Both were on sites already crawled. Both are fixed.</p>
       </div>
       <figure>
         <a href="../assets/case-studies/pio-merchant-gokwik.png"><img src="../assets/case-studies/pio-merchant-gokwik.png" alt="Merchant detail for beminimalist.co in India, showing GoKwik sighted as the checkout vendor, Shopflo marked possible, and the PSP only inferred from the platform."></a>
         <figcaption>beminimalist.co: GoKwik sighted as the checkout vendor, Shopflo the weaker signal beneath it, and the PSP inferred only because no external PSP script fired on any page checked.</figcaption>
       </figure>
     </div>
-
-    <div class="prose">
-      <p>Separately, making the unknown-host leaderboard show only hosts nobody had reviewed yet immediately exposed two live detection misses: a Square subdomain my pattern had pinned one level too deep, and a Klarna EU domain no pattern covered. Both were on sites already crawled. Both are fixed.</p>
-    </div>
   </section>
 
-  <section class="section">
+  <section class="section doc">
     <div class="kicker">05</div>
     <h2>What I would do differently</h2>
     <div class="prose">
