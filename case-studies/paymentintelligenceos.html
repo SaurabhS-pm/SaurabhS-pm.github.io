@@ -135,7 +135,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
       <p>Fifty merchants across the US, Canada, the UK, Japan and India. Forty-eight crawled cleanly. 170 signatures covering 61 vendors across platform, PSP, wallet, BNPL and checkout vendor. Fifty merchants is a sample, not a census. The regional finding below is a hypothesis worth testing at scale, not a market statistic.</p>
     </div>
     <figure class="fig-wide">
-      <a href="../assets/case-studies/pio-explorer.png"><img src="../assets/case-studies/pio-explorer.png" alt="The PaymentIntelligenceOS merchant explorer: filter facets counting country, platform, PSP, wallet, BNPL and checkout vendor, above a table of crawled merchants where inferred detections carry an INFERRED label."></a>
+      <a href="../assets/case-studies/pio-explorer.png"><img src="../assets/case-studies/pio-explorer.png" alt="The PaymentIntelligenceOS merchant explorer: filter facets counting country, platform, PSP, wallet, BNPL and checkout vendor, above a table of crawled merchants where inferred detections carry an INFERRED label." width="2880" height="3000" loading="lazy" decoding="async"></a>
       <figcaption>The explorer: every facet counted across the sample, and each detection carrying its state — sighted, possible or inferred — in the row itself rather than in a footnote.</figcaption>
     </figure>
   </section>
@@ -148,7 +148,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
       <p><strong>Deleting the browser step.</strong> To sight PSPs directly I built a headless browser that added an item to the cart and opened checkout. Standard Shopify robots.txt disallows /cart and /checkout, which we honour, so I tested it on five sites whose robots.txt permits both. One reached a checkout. It carried no PSP scripts, for the reason above. I deleted the feature rather than carry unproven code, and wrote down why.</p>
     </div>
     <figure>
-      <a href="../assets/case-studies/pio-merchant-herschel.png"><img src="../assets/case-studies/pio-merchant-herschel.png" alt="Merchant detail for herschel.com, showing Stripe sighted as the PSP with an evidence row citing psp.stripe.js on the payment_info page."></a>
+      <a href="../assets/case-studies/pio-merchant-herschel.png"><img src="../assets/case-studies/pio-merchant-herschel.png" alt="Merchant detail for herschel.com, showing Stripe sighted as the PSP with an evidence row citing psp.stripe.js on the payment_info page." width="2880" height="3100" loading="lazy" decoding="async"></a>
       <figcaption>herschel.com, the 10 percent case: the PSP is sighted, not assumed — <code>psp.stripe.js</code> firing on the payment-info page, with the matched snippet stored next to it.</figcaption>
     </figure>
   </section>
@@ -162,7 +162,7 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
       <p>Separately, making the unknown-host leaderboard show only hosts nobody had reviewed yet immediately exposed two live detection misses: a Square subdomain my pattern had pinned one level too deep, and a Klarna EU domain no pattern covered. Both were on sites already crawled. Both are fixed.</p>
     </div>
     <figure>
-      <a href="../assets/case-studies/pio-merchant-gokwik.png"><img src="../assets/case-studies/pio-merchant-gokwik.png" alt="Merchant detail for beminimalist.co in India, showing GoKwik sighted as the checkout vendor, Shopflo marked possible, and the PSP only inferred from the platform."></a>
+      <a href="../assets/case-studies/pio-merchant-gokwik.png"><img src="../assets/case-studies/pio-merchant-gokwik.png" alt="Merchant detail for beminimalist.co in India, showing GoKwik sighted as the checkout vendor, Shopflo marked possible, and the PSP only inferred from the platform." width="2880" height="3100" loading="lazy" decoding="async"></a>
       <figcaption>beminimalist.co: GoKwik sighted as the checkout vendor, Shopflo the weaker signal beneath it, and the PSP inferred only because no external PSP script fired on any page checked.</figcaption>
     </figure>
   </section>
