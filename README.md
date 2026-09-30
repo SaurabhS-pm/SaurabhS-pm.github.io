@@ -12,6 +12,10 @@ Source for [saurabhs-pm.github.io](https://saurabhs-pm.github.io/), my product p
 | Cross-border payments | Payments | Completed | On the homepage |
 | Voice AI support agent | Voice AI | In progress | On the homepage |
 
+## Skills and tools
+
+RAG, LLMs, agentic AI, Python, Claude APIs, A/B experimentation, consumer payments, card networks, subscription platforms and 0 to 1 products.
+
 ## How each case study is written
 
 Every case study follows the same five sections, so they are quick to compare.
