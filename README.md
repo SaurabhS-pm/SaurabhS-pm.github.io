@@ -44,6 +44,13 @@ To preview locally, open `index.html` in a browser, or run `python -m http.serve
 
 To add a case study, copy one of the pages in `case-studies/`, keep the five sections, put screenshots in `assets/case-studies/`, then add the page to the Selected work list in `index.html` and to `sitemap.xml`.
 
+## Related repositories
+
+| Repository | What it is |
+|---|---|
+| [competitive-intel-rag](https://github.com/SaurabhS-pm/competitive-intel-rag) | Code for the Competitive Intelligence RAG case study |
+| [SaurabhS-pm](https://github.com/SaurabhS-pm/SaurabhS-pm) | My GitHub profile page |
+
 ## Contact
 
 [LinkedIn](https://www.linkedin.com/in/saurabhsrivast/) · [Email](mailto:writeto.saurabhs@gmail.com)
