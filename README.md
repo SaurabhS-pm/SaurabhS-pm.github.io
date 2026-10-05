@@ -44,6 +44,10 @@ To preview locally, open `index.html` in a browser, or run `python -m http.serve
 
 To add a case study, copy one of the pages in `case-studies/`, keep the five sections, put screenshots in `assets/case-studies/`, then add the page to the Selected work list in `index.html` and to `sitemap.xml`.
 
+## Design notes
+
+One typeface (Archivo, from Google Fonts), a warm off-white background and a single red accent. Colors live as CSS variables at the top of each page, so a color change is a one-line edit per page. Pages are built to read well at phone width with no horizontal scroll.
+
 ## Related repositories
 
 | Repository | What it is |
