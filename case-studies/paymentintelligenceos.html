@@ -97,6 +97,13 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
 @media (max-width:640px){
   .section{padding:44px 0}
 }
+@media print{
+  .nav,.nav-links,footer{display:none}
+  body{background:#fff;color:#000}
+  a{color:#000;text-decoration:underline}
+  img{max-width:100%;break-inside:avoid}
+  h2,h3{break-after:avoid}
+}
 </style>
 </head>
 <body>

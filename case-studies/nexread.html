@@ -113,6 +113,13 @@ footer{padding:28px 24px 48px;font-size:13px;color:var(--ink-3)}
   .stat,.stat:first-child,.stat:last-child{padding:20px 0;border-right:0;border-bottom:2px solid var(--divider)}
   .stat:last-child{border-bottom:0}
 }
+@media print{
+  .nav,.nav-links,footer{display:none}
+  body{background:#fff;color:#000}
+  a{color:#000;text-decoration:underline}
+  img{max-width:100%;break-inside:avoid}
+  h2,h3{break-after:avoid}
+}
 </style>
 </head>
 <body>
