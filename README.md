@@ -52,6 +52,15 @@ One typeface (Archivo, from Google Fonts), a warm off-white background and a sin
 
 Every screenshot has alt text that describes what it shows, not just its title. Links and buttons have a visible focus outline for keyboard users, and text colors meet contrast guidelines on the off-white background.
 
+## Changelog
+
+| When | Change |
+|---|---|
+| Apr 2026 | First version of the portfolio |
+| Sep 2026 | Case studies for PaymentIntelligenceOS, NexRead and Competitive Intelligence RAG |
+| Sep 2026 | Homepage redesign and a single Selected work list |
+| Sep to Oct 2026 | Link previews, structured data, favicon, 404 page, sitemap, print and reduced-motion styles |
+
 ## Related repositories
 
 | Repository | What it is |
