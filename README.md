@@ -30,7 +30,7 @@ Every case study follows the same five sections, so they are quick to compare.
 
 ## How the site is built
 
-Hand-written HTML and CSS, no frameworks and no build step. GitHub Pages serves the `main` branch as is.
+Hand-written HTML and CSS, no frameworks and no build step. GitHub Pages serves the `main` branch as is. A `.nojekyll` file turns off Jekyll processing, so files are published exactly as written.
 
 | Path | What it holds |
 |---|---|
