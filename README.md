@@ -48,6 +48,10 @@ To add a case study, copy one of the pages in `case-studies/`, keep the five sec
 
 One typeface (Archivo, from Google Fonts), a warm off-white background and a single red accent. Colors live as CSS variables at the top of each page, so a color change is a one-line edit per page. Pages are built to read well at phone width with no horizontal scroll.
 
+## Accessibility
+
+Every screenshot has alt text that describes what it shows, not just its title. Links and buttons have a visible focus outline for keyboard users, and text colors meet contrast guidelines on the off-white background.
+
 ## Related repositories
 
 | Repository | What it is |
