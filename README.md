@@ -12,6 +12,18 @@ Source for [saurabhs-pm.github.io](https://saurabhs-pm.github.io/), my product p
 | Cross-border payments | Payments | Completed | On the homepage |
 | Voice AI support agent | Voice AI | In progress | On the homepage |
 
+## How each case study is written
+
+Every case study follows the same five sections, so they are quick to compare.
+
+| Section | What it covers |
+|---|---|
+| Problem | Who has the problem and why it matters |
+| Approach | What I built and the scope I chose |
+| Key decisions | The trade-offs and why I made each call |
+| What I found | Results and what the data showed |
+| What I would do differently | Lessons and next steps |
+
 ## How the site is built
 
 Hand-written HTML and CSS, no frameworks and no build step. GitHub Pages serves the `main` branch as is.
