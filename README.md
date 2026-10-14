@@ -36,7 +36,9 @@ Hand-written HTML and CSS, no frameworks and no build step. GitHub Pages serves 
 | `404.html` | Not-found page |
 | `sitemap.xml`, `robots.txt` | Search engine indexing |
 
-To preview locally, open `index.html` in a browser, or run `python -m http.server` in this folder and visit `localhost:8000`.
+To preview locally, open `index.html` in a browser, or run `python -m http.server` in this folder and visit `localhost:8000`. Use the local server when checking the 404 page and the favicon, since both use root paths.
+
+To add a case study, copy one of the pages in `case-studies/`, keep the five sections, put screenshots in `assets/case-studies/`, then add the page to the Selected work list in `index.html` and to `sitemap.xml`.
 
 ## Contact
 
